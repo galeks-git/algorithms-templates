@@ -23,50 +23,57 @@
 
 
 file = open("input.txt", "r")
-#  В первой строке задано n — количество строк матрицы
+#  В первой строке дано число n –— длина периода измерений в днях
 n = int(file.readline())
-#  Во второй — количество столбцов m
-m = int(file.readline())
-
-k_list_list = []
-for n_count in range(n):
-    ll = list(map(int, file.readline().split()))
-    k_list_list.append(ll)
-
-# В последних двух строках записаны координаты элемента, соседей которого нужно найти. 
-# Индексация начинается с нуля.
-n_pos = int(file.readline())
-#  Во второй — количество столбцов m
-m_pos = int(file.readline())
+#  Во второй строке даны n целых чисел –— значения температуры в каждый из n дней
+ll = list(map(int, file.readline().split()))
 file.close()
 
 # print("n=",n)
+# print("range=",range(n))
 # print("m=",m)
 # print("n_pos=",n_pos)
 # print("m_pos=",m_pos)
-# print(k_list_list)
+# print(ll)
 # # print(k_list_list[1])
 # # print(k_list_list[1][2])
 # print(k_list_list[n_pos][m_pos+1])
 
-result=[]
-if (n_pos==0 and n!=1):
-    result.append(k_list_list[n_pos+1][m_pos])
-elif (0<n_pos<n-1 and n!=1):
-    result.append(k_list_list[n_pos-1][m_pos])
-    result.append(k_list_list[n_pos+1][m_pos])
-elif (n_pos==n-1 and n!=1):
-    result.append(k_list_list[n_pos-1][m_pos])
+res=0
+for count in range(n):
+    if(n==1):
+        res=1
+    if(count==0 and n!=1):
+        if(ll[count]>ll[count+1]):
+            res+=1
+    elif(count==n-1):
+        if(ll[count]>ll[count-1]):
+            res+=1
+    else:
+        if(ll[count-1] < ll[count] > ll[count+1]):
+            res+=1
+    
+print(res)
 
-if (m_pos==0 and m!=1):
-    result.append(k_list_list[n_pos][m_pos+1])
-elif (0<m_pos<m-1 and m!=1):
-    result.append(k_list_list[n_pos][m_pos+1])
-    result.append(k_list_list[n_pos][m_pos-1])
-elif (m_pos==m-1 and m!=1):
-    result.append(k_list_list[n_pos][m_pos-1])
 
-result.sort()
-# print(result)
-print(" ".join(map(str, result)))
+# result=[]
+# if (n_pos==0 and n!=1):
+#     result.append(k_list_list[n_pos+1][m_pos])
+# elif (0<n_pos<n-1 and n!=1):
+#     result.append(k_list_list[n_pos-1][m_pos])
+#     result.append(k_list_list[n_pos+1][m_pos])
+# elif (n_pos==n-1 and n!=1):
+#     result.append(k_list_list[n_pos-1][m_pos])
+
+# if (m_pos==0 and m!=1):
+#     result.append(k_list_list[n_pos][m_pos+1])
+# elif (0<m_pos<m-1 and m!=1):
+#     result.append(k_list_list[n_pos][m_pos+1])
+#     result.append(k_list_list[n_pos][m_pos-1])
+# elif (m_pos==m-1 and m!=1):
+#     result.append(k_list_list[n_pos][m_pos-1])
+
+# result.sort()
+# # print(result)
+# print(" ".join(map(str, result)))
 
