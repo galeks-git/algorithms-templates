@@ -21,16 +21,21 @@ file = open("input.txt", "r")
 #  На вход подаётся целое число в диапазоне от 0 до 10000.
 x = int(file.readline())
 file.close()
-print(x)
-
-ll=''
-k=x
-while(k):
-    k=x//2
-    x=k
-    print("while k=",k)
-    # ll=ll.join(chr(k))
-    ll+='1'
-    # ll+=chr(k)
+# print(x)
+if(x==0):
+    print('0')
+else:
+    ll=''
+    k=x
+    while(x):
+        k=x%2
+        # k=x//2
+        x=x//2
+        c=str(k)
+        # print("while k=",k)
+        # print("while chr k=",c)
+        # ll+='1'
+        ll=str(k)+ll
+        # ll.insert(0,(str(k)))
+        # print(ll)
     print(ll)
-print(ll)
