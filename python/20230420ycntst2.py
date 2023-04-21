@@ -23,26 +23,16 @@ file.close()
 
 def ff(x):
     k=x
-    r=x
-    while(k):
-        # print('r=',r)
-        # print('x=',x)
+    while(1):
         k=x//4
-        print('k=',k)
-        if(k!=0):
-            r=x%(4*k)
-            if(k==1):
-                return True
-            if(r!=0 or k<4):
-                return False
+        kk=x%4
+        # print('k=',k)
+        # print('kk=',kk)
+        if(kk!=0):
+            return False
+        if(k==1):
+            return True
         x=k
-        print('end r=',r)
-    # return True
-
-    # if (r==0):
-    #     return True
-    # else:
-    #     return False
 
 if(x==0):
     print('False')
