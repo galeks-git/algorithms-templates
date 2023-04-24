@@ -29,31 +29,52 @@ x = int(file.readline())
 file.close()
 # print(x)
 
+def is_prime(n):
+    # print('prime n=',n)
+    if n == 1:
+        return False
+    i = 2
+    while i * i <= n:
+        if n % i == 0:
+            return False
+        i = i + 1
+    return True 
+
+
 def ff(x):
     k=x
     j=2
     j_list=[]
     res=''
     while(k):
-        k=x//j
-        kk=x%j
-        print('j=',j)
-        print('k=',k)
-        print('kk=',kk)
-        print('j_list=',j_list)
+        if is_prime(j):
+            k=x//j
+            kk=x%j
+        else:
+            j+=1
+            continue
+        # print('j=',j)
+        # print('k=',k)
+        # print('kk=',kk)
+        # print('j_list=',j_list)
         if(kk!=0):
             j+=1
         if(k!=0 and kk==0):
             res+=str(j)+' '
+            if is_prime(k):
+                return res+str(k)
             x=k
-            if j not in j_list:
-                j_list.append(j)
+            # if j not in j_list:
+            #     j_list.append(j)
+        # print('res=',res)
     return res
 
 if(x==0):
     print(0)
 elif(x==1):
     print(1)
+elif(is_prime(x)):
+    print(x)
 else:
     res=ff(x)
     print(res)
