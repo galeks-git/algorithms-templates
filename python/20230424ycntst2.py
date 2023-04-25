@@ -29,11 +29,16 @@ file.close()
 
 # print('lenll=',lenll)
 # print('ll=',ll)
-# print('ss=',ss)
-# print('tt=',tt)
+print('ss=',ss)
+print('tt=',tt)
 
+res=''
 for i in tt:
     # print('tt[i]=',tt[i])
     if(i not in ss):
-        print(i)
-        break
+        res=i
+    if(i in ss):
+        ss = ss.replace(i, '',1)
+    # print('ss=',ss)
+print(res)
+# break
