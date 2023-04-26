@@ -24,64 +24,73 @@
 
 
 file = open("input.txt", "r")
-# В первой строке дана длина улицы —– n (1 ≤ n ≤ 106)
-n = int(file.readline())
-# В следующей строке записаны n целых неотрицательных чисел — номера домов и обозначения пустых участков на карте (нули)
-nn = tuple(map(int, file.readline().split()))
+# В первой строке дано целое число k (1 ≤ k ≤ 5).
+k = int(file.readline())
+# В четырёх следующих строках задан вид тренажёра -— по 4 символа в каждой строке. 
+# Каждый символ – либо точка, либо цифра от 1 до 9.
+# Символы одной строки идут подряд и не разделены пробелами.
+
+k_list_list = []
+for n_count in range(4):
+    ll = str(file.readline())
+    # ll = map(str, file.readline().split())
+    # ll = list(map(str, file.readline().split()))
+    k_list_list.append(ll)
+
 file.close()
 
 
-# print('n=',n)
-# print('nn=',nn)
+print('k=',k)
+print('k_list_list=',k_list_list)
 
-def ff(i,res,n,first):
-    # print('ff i=',i)
-    res[i]=0
+# def ff(i,res,n,first):
+#     # print('ff i=',i)
+#     res[i]=0
 
-    if(i<n):
-        x=i+1
-        len=1
-        while(x<n and res[x]):
-            # print('x=',x)
-            res[x]=len
-            # if (res[x+1]==len):
-            #     break
-            len+=1
-            x+=1
-        # print('res=',res)
+#     if(i<n):
+#         x=i+1
+#         len=1
+#         while(x<n and res[x]):
+#             # print('x=',x)
+#             res[x]=len
+#             # if (res[x+1]==len):
+#             #     break
+#             len+=1
+#             x+=1
+#         # print('res=',res)
 
-    if(i>0):
-        y=i-1
-        len=1
-        # print('first=',first)
-        if(first):
-            while(y>=0 and res[y]):
-                # print('y=',y)
-                res[y]=len
-                len+=1
-                y-=1
-            # print('res=',res)
-        else:
-            while(y>=0 and res[y]):
-                # print('y=',y)
-                if (res[y]==len):
-                    break
-                res[y]=len
-                if (res[y-1]==len):
-                    break
-                len+=1
-                y-=1
-            # print('res=',res)
+#     if(i>0):
+#         y=i-1
+#         len=1
+#         # print('first=',first)
+#         if(first):
+#             while(y>=0 and res[y]):
+#                 # print('y=',y)
+#                 res[y]=len
+#                 len+=1
+#                 y-=1
+#             # print('res=',res)
+#         else:
+#             while(y>=0 and res[y]):
+#                 # print('y=',y)
+#                 if (res[y]==len):
+#                     break
+#                 res[y]=len
+#                 if (res[y-1]==len):
+#                     break
+#                 len+=1
+#                 y-=1
+#             # print('res=',res)
 
 
 
-res=[]
-first=True
-for i in range(n):
-    res.append(nn[i])
-for i in range(n):
-    if nn[i]==0:
-        # print('i=',i)
-        ff(i,res,n,first)
-        first=False
-print(*res, sep=' ')
+# res=[]
+# first=True
+# for i in range(n):
+#     res.append(nn[i])
+# for i in range(n):
+#     if nn[i]==0:
+#         # print('i=',i)
+#         ff(i,res,n,first)
+#         first=False
+# print(*res, sep=' ')
