@@ -23,65 +23,83 @@
 # Для каждого из участков выведите расстояние до ближайшего нуля. Числа выводите в одну строку, разделяя их пробелами.
 
 
+
+
+
+
+
+# В начале каждого решения в комментарии укажите ID успешной посылки,
+# чтобы ревьюер мог удостовериться, что решение рабочее.
+# ID: 86518345
+ 
+
 file = open("input.txt", "r")
 # В первой строке дана длина улицы —– n (1 ≤ n ≤ 106)
-n = int(file.readline())
+len_street = int(file.readline())
 # В следующей строке записаны n целых неотрицательных чисел — номера домов и обозначения пустых участков на карте (нули)
-nn = tuple(map(int, file.readline().split()))
+house_numbers_list = tuple(map(int, file.readline().split()))
+# nn = tuple(map(int, file.readline().split()))
 file.close()
 
 
 # print('n=',n)
 # print('nn=',nn)
 
-def ff(i,res,n,first):
+# def ff(i,res,n,first):
+ 
+def digits_waves(begin_list_index, dw_result, dw_len_street, dw_first_wave):
     # print('ff i=',i)
-    res[i]=0
+    dw_result[begin_list_index] = 0
 
-    if(i<n):
-        x=i+1
-        len=1
-        while(x<n and res[x]):
+    if (begin_list_index < dw_len_street):
+        index_right = begin_list_index + 1
+        len = 1
+        while (index_right < dw_len_street and dw_result[index_right]):
             # print('x=',x)
-            res[x]=len
+            dw_result[index_right] = len
             # if (res[x+1]==len):
             #     break
-            len+=1
-            x+=1
+            len += 1
+            index_right += 1
         # print('res=',res)
 
-    if(i>0):
-        y=i-1
-        len=1
+    if (begin_list_index > 0):
+        index_left = begin_list_index - 1
+        len = 1
         # print('first=',first)
-        if(first):
-            while(y>=0 and res[y]):
+        if (dw_first_wave):
+            while (index_left >= 0 and dw_result[index_left]):
                 # print('y=',y)
-                res[y]=len
-                len+=1
-                y-=1
+                dw_result[index_left] = len
+                len += 1
+                index_left -= 1
             # print('res=',res)
         else:
-            while(y>=0 and res[y]):
+            while (index_left >= 0 and dw_result[index_left]):
                 # print('y=',y)
-                if (res[y]==len):
+                if (dw_result[index_left] == len):
                     break
-                res[y]=len
-                if (res[y-1]==len):
+                dw_result[index_left] = len
+                if (dw_result[index_left-1] == len):
                     break
-                len+=1
-                y-=1
+                len += 1
+                index_left -= 1
             # print('res=',res)
 
 
+def main():
+    # result = []
+    first_wave = True
+    result = list(house_numbers_list)
+    # for i in range(len_street):
+    #     result.append(house_numbers_list[i])
+    for i in range(len_street):
+        if house_numbers_list[i] == 0:
+            # print('i=',i)
+            digits_waves(i, result, len_street, first_wave)
+            first_wave = False
+    print(*result, sep=' ')
 
-res=[]
-first=True
-for i in range(n):
-    res.append(nn[i])
-for i in range(n):
-    if nn[i]==0:
-        # print('i=',i)
-        ff(i,res,n,first)
-        first=False
-print(*res, sep=' ')
+
+if __name__ == '__main__':
+    main()
