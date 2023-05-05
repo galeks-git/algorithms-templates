@@ -63,20 +63,7 @@ def digits_waves(begin_list_index, dw_result, prev_list_index, next_list_index, 
             index_right += 1
 
 
-
-
-def main():
-
-    file = open("input.txt", "r")
-    # В первой строке дана длина улицы —– n (1 ≤ n ≤ 106)
-    len_street = int(file.readline())
-    # В следующей строке записаны n целых неотрицательных чисел — номера домов и обозначения пустых участков на карте (нули)
-    house_numbers_list = tuple(map(int, file.readline().split()))
-    # nn = tuple(map(int, file.readline().split()))
-    file.close()
-
-
-
+def nearest_zero(house_numbers_list, len_street):
     # result = []
     # for i in range(len_street):
     #     result.append(house_numbers_list[i])
@@ -86,34 +73,99 @@ def main():
 
     zero_indexes_list = []
     for i in range(len_street):
-        if house_numbers_list[i] == 0:
+        if house_numbers_list[i] == '0':
             zero_indexes_list.append(i)
     print('zero_indexes_list=', zero_indexes_list)
 
-    for i in range(len(zero_indexes_list)):
+    ll= list(range(1, zero_indexes_list[0], -1))
 
-        if i == 0:
-            prev_zero_index = None
-        else:
-            prev_zero_index = zero_indexes_list[i-1]
+    # slice_ = slice(1, zero_indexes_list[0], -1)
+    for i in range(zero_indexes_list[0]):
+        result[i]= ll[i]
 
-        if i+1 == len(zero_indexes_list):
-            next_zero_index = None
-        else:
-            next_zero_index = zero_indexes_list[i+1]
+    # for i in range(len(zero_indexes_list)):
 
-        digits_waves(
-            zero_indexes_list[i], result,
-            prev_zero_index, next_zero_index, len_street
-        )
+    #     if i == 0:
+    #         prev_zero_index = None
+    #     else:
+    #         prev_zero_index = zero_indexes_list[i-1]
 
-    # for i in range(len_street):
-    #     if house_numbers_list[i] == 0:
-    #         # print('i=',i)
-    #         digits_waves(i, result, len_street, first_wave)
-    #         first_wave = False
+    #     if i+1 == len(zero_indexes_list):
+    #         next_zero_index = None
+    #     else:
+    #         next_zero_index = zero_indexes_list[i+1]
+
+    #     digits_waves(
+    #         zero_indexes_list[i], result,
+    #         prev_zero_index, next_zero_index, len_street
+    #     )
+    return result
+
+
+def main():
+    file = open("input.txt", "r")
+    # В первой строке дана длина улицы —– n (1 ≤ n ≤ 106)
+    len_street = int(file.readline())
+    # В следующей строке записаны n целых неотрицательных чисел — номера домов и обозначения пустых участков на карте (нули)
+    house_numbers_list = tuple(map(str, file.readline().split()))
+    # house_numbers_list = tuple(map(int, file.readline().split()))
+    file.close()
+    result = nearest_zero(house_numbers_list, len_street)
     print(*result, sep=' ')
 
 
 if __name__ == '__main__':
     main()
+
+
+# def main():
+
+#     file = open("input.txt", "r")
+#     # В первой строке дана длина улицы —– n (1 ≤ n ≤ 106)
+#     len_street = int(file.readline())
+#     # В следующей строке записаны n целых неотрицательных чисел — номера домов и обозначения пустых участков на карте (нули)
+#     house_numbers_list = tuple(map(str, file.readline().split()))
+#     # house_numbers_list = tuple(map(int, file.readline().split()))
+
+#     file.close()
+
+
+
+#     # result = []
+#     # for i in range(len_street):
+#     #     result.append(house_numbers_list[i])
+
+#     result = list(house_numbers_list)
+#     print(*result, sep=' ')
+
+#     zero_indexes_list = []
+#     for i in range(len_street):
+#         if house_numbers_list[i] == '0':
+#             zero_indexes_list.append(i)
+#     print('zero_indexes_list=', zero_indexes_list)
+
+#     for i in range(len(zero_indexes_list)):
+
+#         if i == 0:
+#             prev_zero_index = None
+#         else:
+#             prev_zero_index = zero_indexes_list[i-1]
+
+#         if i+1 == len(zero_indexes_list):
+#             next_zero_index = None
+#         else:
+#             next_zero_index = zero_indexes_list[i+1]
+
+#         digits_waves(
+#             zero_indexes_list[i], result,
+#             prev_zero_index, next_zero_index, len_street
+#         )
+
+#     # for i in range(len_street):
+#     #     if house_numbers_list[i] == 0:
+#     #         # print('i=',i)
+#     #         digits_waves(i, result, len_street, first_wave)
+#     #         first_wave = False
+#     print(*result, sep=' ')
+
+
