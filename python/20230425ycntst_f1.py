@@ -23,82 +23,85 @@
 # Для каждого из участков выведите расстояние до ближайшего нуля. Числа выводите в одну строку, разделяя их пробелами.
 
 
-
-
 # 86852248
 
 
-def digits_waves(begin_list_index, dw_result, prev_list_index, next_list_index, dw_len_street):
-    dw_result[begin_list_index] = 0
-    index_left = begin_list_index - 1
-    len = 1
+def between_zeros(bz_result, begin_zero_index, end_zero_index):
+    # print('begin_zero_index=', begin_zero_index)
+    # print('end_zero_index=', end_zero_index)
+    len_zero_index = end_zero_index-begin_zero_index
+    if (len_zero_index <= 1):
+        return
+    if (len_zero_index <= 2):
+        bz_result[begin_zero_index+1] = 1
+        return
 
-    if (prev_list_index is not None):
-        while (index_left > prev_list_index):
-            if (dw_result[index_left] == len):
-                break
-            dw_result[index_left] = len
-            if (dw_result[index_left-1] == len):
-                break
-            len += 1
-            index_left -= 1
-    else:
-        while (index_left >= 0):
-                dw_result[index_left] = len
-                len += 1
-                index_left -= 1
+    count = 0
+    while (True):
+        x = begin_zero_index + count
+        y = end_zero_index - count
+        # print('while count=', count)
+        # print('while x=', x)
+        # print('while y=', y)
+        bz_result[x] = count
+        bz_result[y] = count
+        if (y-x <= 1):
+            return
+        # if(y-x==1):
+        #     return
+        count += 1
 
-    index_right = begin_list_index + 1
-    len = 1
-
-    if (next_list_index is not None):
-        while (index_right < next_list_index):
-            dw_result[index_right] = len
-            len += 1
-            index_right += 1
-    else:
-        while (index_right < dw_len_street):
-            dw_result[index_right] = len
-            len += 1
-            index_right += 1
+    # count = 0
+    # while(1):
+    #     print('while count=', count)
+    #     x=begin_zero_index+count
+    #     y=end_zero_index-count
+    #     print('while x=', x)
+    #     print('while y=', y)
+    #     bz_result[x]=count
+    #     bz_result[y]=count
+    #     if(y-x<=0):
+    #         return
+    #     if(y-x==1):
+    #         return
+    #     count+=1
 
 
 def nearest_zero(house_numbers_list, len_street):
-    # result = []
-    # for i in range(len_street):
-    #     result.append(house_numbers_list[i])
-
     result = list(house_numbers_list)
-    print(*result, sep=' ')
+    # print(*result, sep=' ')
 
     zero_indexes_list = []
     for i in range(len_street):
         if house_numbers_list[i] == '0':
             zero_indexes_list.append(i)
-    print('zero_indexes_list=', zero_indexes_list)
+    # print('zero_indexes_list=', zero_indexes_list)
 
-    ll= list(range(1, zero_indexes_list[0], -1))
+    # count = zero_indexes_list[0]
+    # for i in range(zero_indexes_list[0], 0, -1):
+    #     result[i] = count
+    #     count -= 1
 
-    # slice_ = slice(1, zero_indexes_list[0], -1)
+
+    ll = list(range(zero_indexes_list[0], 0, -1))
+    # print('ll=', ll)
     for i in range(zero_indexes_list[0]):
-        result[i]= ll[i]
+        result[i] = ll[i]
 
-    # for i in range(len(zero_indexes_list)):
 
-    #     if i == 0:
-    #         prev_zero_index = None
-    #     else:
-    #         prev_zero_index = zero_indexes_list[i-1]
+    # len_ll=len(zero_indexes_list)
+    # print('len_ll=', len_ll)
+    # print('len_street=', len_street)
+    # print('zero_indexes_list[-1]=', zero_indexes_list[-1])
 
-    #     if i+1 == len(zero_indexes_list):
-    #         next_zero_index = None
-    #     else:
-    #         next_zero_index = zero_indexes_list[i+1]
-
-    #     digits_waves(
-    #         zero_indexes_list[i], result,
-    #         prev_zero_index, next_zero_index, len_street
-    #     )
+    # for i in range(0, len_ll-1, 1):
+    for i in range(0, len(zero_indexes_list)-1, 1):
+        between_zeros(result, zero_indexes_list[i], zero_indexes_list[i+1])
+    
+    count = 0
+    for i in range(zero_indexes_list[-1], len_street, 1):
+        result[i] = count
+        count += 1
     return result
 
 
@@ -116,6 +119,44 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+
+
+
+
+# def digits_waves(begin_list_index, dw_result, prev_list_index, next_list_index, dw_len_street):
+#     dw_result[begin_list_index] = 0
+#     index_left = begin_list_index - 1
+#     len = 1
+
+#     if (prev_list_index is not None):
+#         while (index_left > prev_list_index):
+#             if (dw_result[index_left] == len):
+#                 break
+#             dw_result[index_left] = len
+#             if (dw_result[index_left-1] == len):
+#                 break
+#             len += 1
+#             index_left -= 1
+#     else:
+#         while (index_left >= 0):
+#                 dw_result[index_left] = len
+#                 len += 1
+#                 index_left -= 1
+
+#     index_right = begin_list_index + 1
+#     len = 1
+
+#     if (next_list_index is not None):
+#         while (index_right < next_list_index):
+#             dw_result[index_right] = len
+#             len += 1
+#             index_right += 1
+#     else:
+#         while (index_right < dw_len_street):
+#             dw_result[index_right] = len
+#             len += 1
+#             index_right += 1
 
 
 # def main():
