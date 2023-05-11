@@ -21,18 +21,37 @@
 
 
 
-
-
-
 # В начале каждого решения в комментарии укажите ID успешной посылки,
 # чтобы ревьюер мог удостовериться, что решение рабочее.
+
+
+
+
 # ID: 86518345
 
 from collections import Counter
 
+NUMBER_OF_PLAYERS = 2
 
-def main():
-    NUMBER_OF_PLAYERS = 2
+
+def dex_hands(dh_matrix_4_4, dh_k):
+    # matrix_dict = Counter()
+
+    # for i in matrix_4_4:
+    #     matrix_dict += Counter(i)
+    #     print('i=', i)
+    #     # f = Counter(i)
+    #     # matrix_dict += f
+    #     print('matrix_dict=', matrix_dict)
+    
+    matrix_dict = Counter(dh_matrix_4_4)
+    # print('matrix_dict=', matrix_dict)
+    result = [x for x in matrix_dict if matrix_dict[x] <= NUMBER_OF_PLAYERS*dh_k]
+    return len(result)
+
+
+if __name__ == '__main__':
+    # NUMBER_OF_PLAYERS = 2
 
     file = open("input.txt", "r")
     # В первой строке дано целое число k (1 ≤ k ≤ 5).
@@ -43,25 +62,9 @@ def main():
     matrix_4_4 = ''
     # matrix_4_4 = []
     for n_count in range(4):
-        matrix_4_4+="".join(filter(str.isdecimal, str(file.readline())))
-
+        matrix_4_4 += "".join(filter(str.isdecimal, str(file.readline())))
     file.close()
-    print('matrix_4_4=', matrix_4_4)
+    # print('matrix_4_4=', matrix_4_4)
 
-    # matrix_dict = Counter()
-
-    # for i in matrix_4_4:
-    #     matrix_dict += Counter(i)
-    #     print('i=', i)
-    #     # f = Counter(i)
-    #     # matrix_dict += f
-    #     print('matrix_dict=', matrix_dict)
-    
-    matrix_dict = Counter(matrix_4_4)
-    print('matrix_dict=', matrix_dict)
-    result = [x for x in matrix_dict if matrix_dict[x] <= NUMBER_OF_PLAYERS*k]
-    print(len(result))
-
-
-if __name__ == '__main__':
-    main()
+    result = dex_hands(matrix_4_4, k)
+    print(result)

@@ -26,45 +26,63 @@
 # 86852248
 
 
+# def between_zeros(bz_result, begin_zero_index, end_zero_index):
+#     # print('begin_zero_index=', begin_zero_index)
+#     # print('end_zero_index=', end_zero_index)
+#     len_zero_index = end_zero_index-begin_zero_index
+#     if (len_zero_index <= 1):
+#         return
+#     if (len_zero_index <= 2):
+#         bz_result[begin_zero_index+1] = 1
+#         return
+
+#     count = 0
+#     while (True):
+#         x = begin_zero_index + count
+#         y = end_zero_index - count
+#         # print('while count=', count)
+#         # print('while x=', x)
+#         # print('while y=', y)
+#         bz_result[x] = count
+#         bz_result[y] = count
+#         if (y-x <= 1):
+#             return
+#         # if(y-x==1):
+#         #     return
+#         count += 1
+
 def between_zeros(bz_result, begin_zero_index, end_zero_index):
     # print('begin_zero_index=', begin_zero_index)
     # print('end_zero_index=', end_zero_index)
-    len_zero_index = end_zero_index-begin_zero_index
-    if (len_zero_index <= 1):
-        return
-    if (len_zero_index <= 2):
-        bz_result[begin_zero_index+1] = 1
-        return
 
-    count = 0
-    while (True):
-        x = begin_zero_index + count
-        y = end_zero_index - count
-        # print('while count=', count)
-        # print('while x=', x)
-        # print('while y=', y)
-        bz_result[x] = count
-        bz_result[y] = count
-        if (y-x <= 1):
-            return
-        # if(y-x==1):
-        #     return
-        count += 1
+    for i in range(begin_zero_index, end_zero_index, 1):
+        bz_result[i] = min(i-begin_zero_index,end_zero_index-i)
+        # print('i=',i)
+        # print('bz_result[i]=',bz_result[i])
+
+
+
+    # len_zero_index = end_zero_index-begin_zero_index
+    # if (len_zero_index <= 1):
+    #     return
+    # if (len_zero_index <= 2):
+    #     bz_result[begin_zero_index+1] = 1
+    #     return
 
     # count = 0
-    # while(1):
-    #     print('while count=', count)
-    #     x=begin_zero_index+count
-    #     y=end_zero_index-count
-    #     print('while x=', x)
-    #     print('while y=', y)
-    #     bz_result[x]=count
-    #     bz_result[y]=count
-    #     if(y-x<=0):
+    # while (True):
+    #     x = begin_zero_index + count
+    #     y = end_zero_index - count
+    #     # print('while count=', count)
+    #     # print('while x=', x)
+    #     # print('while y=', y)
+    #     bz_result[x] = count
+    #     bz_result[y] = count
+    #     if (y-x <= 1):
     #         return
-    #     if(y-x==1):
-    #         return
-    #     count+=1
+    #     # if(y-x==1):
+    #     #     return
+    #     count += 1
 
 
 def nearest_zero(house_numbers_list, len_street):
@@ -83,10 +101,10 @@ def nearest_zero(house_numbers_list, len_street):
     #     count -= 1
 
 
-    ll = list(range(zero_indexes_list[0], 0, -1))
+    # ll = list(range(zero_indexes_list[0], 0, -1))
     # print('ll=', ll)
     for i in range(zero_indexes_list[0]):
-        result[i] = ll[i]
+        result[i] = zero_indexes_list[0] - i
 
 
     # len_ll=len(zero_indexes_list)
@@ -98,14 +116,14 @@ def nearest_zero(house_numbers_list, len_street):
     for i in range(0, len(zero_indexes_list)-1, 1):
         between_zeros(result, zero_indexes_list[i], zero_indexes_list[i+1])
     
-    count = 0
+    # count = 0
     for i in range(zero_indexes_list[-1], len_street, 1):
-        result[i] = count
-        count += 1
+        result[i] = i - zero_indexes_list[-1]
+        # count += 1
     return result
 
 
-def main():
+if __name__ == '__main__':
     file = open("input.txt", "r")
     # В первой строке дана длина улицы —– n (1 ≤ n ≤ 106)
     len_street = int(file.readline())
@@ -115,10 +133,6 @@ def main():
     file.close()
     result = nearest_zero(house_numbers_list, len_street)
     print(*result, sep=' ')
-
-
-if __name__ == '__main__':
-    main()
 
 
 
