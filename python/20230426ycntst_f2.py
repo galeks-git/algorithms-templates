@@ -34,7 +34,7 @@ from collections import Counter
 NUMBER_OF_PLAYERS = 2
 
 
-def dex_hands(dh_matrix_4_4, dh_k):
+def dexterity_hands(matrix_4_4, buttons_per_player):
     # matrix_dict = Counter()
 
     # for i in matrix_4_4:
@@ -44,9 +44,12 @@ def dex_hands(dh_matrix_4_4, dh_k):
     #     # matrix_dict += f
     #     print('matrix_dict=', matrix_dict)
     
-    matrix_dict = Counter(dh_matrix_4_4)
+    matrix_dict = Counter(matrix_4_4)
     # print('matrix_dict=', matrix_dict)
-    result = [x for x in matrix_dict if matrix_dict[x] <= NUMBER_OF_PLAYERS*dh_k]
+    result = [
+        x for x in matrix_dict
+        if matrix_dict[x] <= NUMBER_OF_PLAYERS * buttons_per_player
+    ]
     return len(result)
 
 
@@ -55,8 +58,8 @@ if __name__ == '__main__':
 
     file = open("input.txt", "r")
     # В первой строке дано целое число k (1 ≤ k ≤ 5).
-    k = int(file.readline())
-    # В четырёх следующих строках задан вид тренажёра -— по 4 символа в каждой строке. 
+    buttons_per_player = int(file.readline())
+    # В четырёх следующих строках задан вид тренажёра -— по 4 символа в строке.
     # Каждый символ – либо точка, либо цифра от 1 до 9.
     # Символы одной строки идут подряд и не разделены пробелами.
     matrix_4_4 = ''
@@ -66,5 +69,5 @@ if __name__ == '__main__':
     file.close()
     # print('matrix_4_4=', matrix_4_4)
 
-    result = dex_hands(matrix_4_4, k)
+    result = dexterity_hands(matrix_4_4, buttons_per_player)
     print(result)

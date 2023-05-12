@@ -51,14 +51,14 @@
 #         #     return
 #         count += 1
 
-def between_zeros(bz_result, begin_zero_index, end_zero_index):
-    # print('begin_zero_index=', begin_zero_index)
-    # print('end_zero_index=', end_zero_index)
+# def between_zeros(bz_result, begin_zero_index, end_zero_index):
+#     # print('begin_zero_index=', begin_zero_index)
+#     # print('end_zero_index=', end_zero_index)
 
-    for i in range(begin_zero_index, end_zero_index, 1):
-        bz_result[i] = min(i-begin_zero_index,end_zero_index-i)
-        # print('i=',i)
-        # print('bz_result[i]=',bz_result[i])
+#     for i in range(begin_zero_index, end_zero_index, 1):
+#         bz_result[i] = min(i-begin_zero_index,end_zero_index-i)
+#         # print('i=',i)
+#         # print('bz_result[i]=',bz_result[i])
 
 
 
@@ -113,9 +113,16 @@ def nearest_zero(house_numbers_list, len_street):
     # print('zero_indexes_list[-1]=', zero_indexes_list[-1])
 
     # for i in range(0, len_ll-1, 1):
-    for i in range(0, len(zero_indexes_list)-1, 1):
-        between_zeros(result, zero_indexes_list[i], zero_indexes_list[i+1])
-    
+    # for i in range(0, len(zero_indexes_list)-1, 1):
+    #     between_zeros(result, zero_indexes_list[i], zero_indexes_list[i+1])
+
+    for i in range(0, len(zero_indexes_list) - 1, 1):
+        for j in range(zero_indexes_list[i], zero_indexes_list[i + 1], 1):
+            result[j] = min(
+                j - zero_indexes_list[i], zero_indexes_list[i + 1] - j
+            )
+
+
     # count = 0
     for i in range(zero_indexes_list[-1], len_street, 1):
         result[i] = i - zero_indexes_list[-1]
