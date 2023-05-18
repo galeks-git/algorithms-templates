@@ -21,23 +21,42 @@
 # Формат вывода
 # Для каждой команды get_max() напечатайте результат её выполнения. Если стек пустой, для команды get_max() напечатайте «None». Если происходит удаление из пустого стека — напечатайте «error».
 
-class StackMax:
-    def __init__(self):
-        self.items = []
+class StackMaxEff:
+    def __init__(self, n):
+        self.items = [None] * n
+        self.head_index = 0
+        self.max = None
 
     def push(self, item):
-        self.items.append(item)
+        self.items[self.head_index] = item
+        self.head_index += 1
+        # self.items.append(item)
+        self.max = max([i for i in self.items if i is not None])
 
     def pop(self):
         if self.items:
-            return self.items.pop()
+            self.head_index -= 1
+            res = self.items[self.head_index]
+            self.items[self.head_index] = None
+            # res = self.items.pop()
+            if self.items:
+                self.max = max([i for i in self.items if i is not None])
+            else:
+                self.max = None
+            return res
         else:
             return 'error'
 
     def get_max(self):
         if self.items:
-            return max(self.items)
+            if self.max:
+                return self.max
+            else:
+                self.max = max([i for i in self.items if i is not None])
+                # self.max = max(self.items)
+                return self.max
         else:
+            self.max = None
             return None
 
     # def peek(self):
@@ -48,7 +67,6 @@ class StackMax:
 
 
 if __name__ == '__main__':
-    # NUMBER_OF_PLAYERS = 2
 
     file = open("input.txt", "r")
     # В первой строке записано одно число n — количество команд, которое не превосходит 10000.
@@ -65,7 +83,7 @@ if __name__ == '__main__':
     # print('commands_list=', commands_list)
 
 
-    new_stack=StackMax()
+    new_stack=StackMaxEff(n)
 
     # comm_dict={
     #     # 'push': push,
@@ -102,4 +120,3 @@ if __name__ == '__main__':
         #     # k=new_stack.comm_dict[command[0]]()
         #     # k=getattr(new_stack, command[0])()
         #     # print(k)
-
