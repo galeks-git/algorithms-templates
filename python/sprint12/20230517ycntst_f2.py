@@ -56,6 +56,8 @@
 # Формат вывода
 # Выведите единственное число — значение выражения.
 
+import operator
+
 
 class StackDigits:
     def __init__(self):
@@ -72,45 +74,28 @@ class StackDigits:
         if self.items:
             return self.items.pop()
         else:
-            return 'error'
-
-
-def exp_stack(exp, digits):
-    # print('exp_stack exp=', exp)
-    # print('exp_stack digits=', digits)
-    if (exp == '+'):
-        b = digits.pop()
-        a = digits.pop()
-        return a + b
-    elif (exp == '-'):
-        b = digits.pop()
-        a = digits.pop()
-        return a - b
-    elif (exp == '*'):
-        b = digits.pop()
-        a = digits.pop()
-        return a * b
-    elif (exp == '/'):
-        b = digits.pop()
-        a = digits.pop()
-        return a // b
-    else:
-        return None
+            return 'Error Stack is empty'
 
 
 def polish_calc(exp_list):
     result = list(exp_list)
     # print(result)
-
     digits = StackDigits()
-
+    exp_dict = {
+        '+': operator.add,
+        '-': operator.sub,
+        '*': operator.mul,
+        '/': operator.floordiv,
+    }
     result = 0
     for i in exp_list:
-        if i.isdigit() or i.lstrip("-").isdigit():
+        if i not in exp_dict:
             digits.push(int(i))
             result = int(i)
         else:
-            result = exp_stack(i, digits)
+            b = digits.pop()
+            a = digits.pop()
+            result = exp_dict[i](a, b)
             digits.push(result)
     return result
 

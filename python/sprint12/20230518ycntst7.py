@@ -32,19 +32,7 @@ class StackMax:
         if self.items:
             return self.items.pop()
         else:
-            return 'error'
-
-    # def get_max(self):
-    #     if self.items:
-    #         return max(self.items)
-    #     else:
-    #         return None
-
-    # def peek(self):
-    #     return self.items[-1]
-
-    # def size(self):
-    #     return len(self.items) 
+            return None
 
 
 if __name__ == '__main__':
@@ -62,61 +50,54 @@ if __name__ == '__main__':
     print(ll)
 
     ldict={
-        '(':")",
-        '[':"]",
-        '{':"}",
+        ')':"(",
+        ']':"[",
+        '}':"{",
+        '(':None,
+        '[':None,
+        '{':None,
+        # '(':")",
+        # '[':"]",
+        # '{':"}",
     }
 
     new_stack=StackMax()
 
+    res = True
+
     for i in ll:
+        if i not in ldict:
+            print("i not in ldict:")
+            print("     new_stack=",new_stack)
+            x = new_stack.pop()
+            if x is not None:
+                print("     if x is None")
+                res = False
+                print("         res=",res)
+            continue
         x = new_stack.pop()
+        if x is None:
+            print("if x is None")
+            print("     i=",i)
+            new_stack.push(i)
+            print("     new_stack=",new_stack)
+            continue
         print("i=",i)
         print("x=",x)
-        if(i == x):
+        if ldict[i] == x:
+            res = True
+            print("ldict[i] == x")
+            print("     new_stack=",new_stack)
+            print("     res=",res)
             continue
+        # if(i == x):
+        #     continue
         else:
+            res = False
+            print("else")
+            print("     res=",res)
             new_stack.push(x)
             new_stack.push(i)
         print("new_stack=",new_stack)
-
-
-    # lenl=len(ll)
-    # res='True'
-    # rlen=0
-    # count_lenl=lenl-1
-    # for count in range(int(lenl/2)):
-    #     if(ll[count]!=ll[count_lenl]):
-    #         res='False'
-    #         break
-    #     count_lenl-=1
-    # print(res)
-
-
-    # for i in commands_list:
-    #     # print(i)
-    #     command=i.split()
-    #     # print(command)
-    #     # print(new_stack.i())
-    #     if command[0]=='push':
-    #         # comm_dict[command[0]](int(command[1]))
-    #         # new_stack.comm_dict[command[0]](int(command[1]))
-    #         getattr(new_stack, command[0])(int(command[1]))
-    #     elif command[0]=='pop':
-    #         # comm_dict[command[0]]()
-    #         # new_stack.comm_dict[command[0]](int(command[1]))
-    #         # getattr(new_stack, command[0])()
-    #         k=getattr(new_stack, command[0])()
-    #         if (k=="error"):
-    #             print(k)
-    #     elif command[0]=='get_max':
-    #         # k=comm_dict[command[0]]()
-    #         # k=new_stack.comm_dict[command[0]]()
-    #         k=getattr(new_stack, command[0])()
-    #         print(k)
-    #     # else:
-    #     #     k=comm_dict[command[0]]()
-    #     #     # k=new_stack.comm_dict[command[0]]()
-    #     #     # k=getattr(new_stack, command[0])()
-    #     #     # print(k)
+    print(res)
 
