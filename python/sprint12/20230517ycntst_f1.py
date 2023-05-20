@@ -24,12 +24,24 @@
 # Выведите результат выполнения каждой команды на отдельной строке. Для успешных запросов push_back(x) и push_front(x) ничего выводить не надо.
 
 
-class DeqStack:
+# 87465081
+
+class DequeStackFullError(Exception):
+    """Вызывается, когда DequeStack full"""
+    pass
+
+
+class DequeStackEmptyError(Exception):
+    """Вызывается, когда DequeStack empty"""
+    pass
+
+
+class DequeStack:
     def __init__(self, len_cells):
         self.cells = [None] * len_cells
         self.len_cells = len_cells
         self.head = 0
-        self.tail = 0
+        self.tail = 1
         self.size = 0
 
     def __str__(self):
@@ -38,71 +50,55 @@ class DeqStack:
     def is_empty(self):
         return self.size == 0
 
-    # def head_forward(self):
-    #     # print("head_forward 1self.head=",self.head)
-    #     self.head = (self.head+1) % self.len_cells
-    #     # print("head_forward 2self.head=",self.head)
-    #     return
+    def is_full(self):
+        return self.size == self.len_cells
 
-    # def head_backward(self):
-    #     self.head = (self.head-1) % self.len_cells
-    #     return
-
-    # def tail_forward(self):
-    #     self.tail = (self.tail+1) % self.len_cells
-    #     return
-
-    # def tail_backward(self):
-    #     self.tail = (self.tail-1) % self.len_cells
-    #     return
-
-    def push_back(self, x):
-        if self.size == self.len_cells:
-            raise TypeError
-        self.cells[self.tail] = x
+    def push_back(self, value):
+        if self.is_full():
+            raise DequeStackFullError
+        if self.is_empty():
+            self.tail = self.head
+        self.cells[self.tail] = value
         # print("1push_back self.tail=",self.tail)
-        # self.tail_forward()
         self.tail = (self.tail + 1) % self.len_cells
-        # self.tail = (self.tail + 1) % self.max_n
         # print("2push_back self.tail=",self.tail)
         self.size += 1
 
-    def push_front(self, x):
-        if self.size == self.len_cells:
-            raise TypeError
-        # self.head_backward()
+    def push_front(self, value):
+        if self.is_full():
+            raise DequeStackFullError
+        if self.is_empty():
+            self.tail = self.head
+            # self.tail = (self.head + 1) % self.len_cells
         self.head = (self.head - 1) % self.len_cells
-        self.cells[self.head] = x
+        self.cells[self.head] = value
         self.size += 1
 
     def pop_front(self):
         if self.is_empty():
-            raise TypeError
-        x = self.cells[self.head]
+            raise DequeStackEmptyError
+        tmp_cell = self.cells[self.head]
         self.cells[self.head] = None
         # print("1pop_front self.head=",self.head)
         # print("1pop_front self.tail=",self.tail)
         # print("1pop_front self.size=",self.size)
-        # self.head_forward()
         self.head = (self.head + 1) % self.len_cells
-        # self.head = (self.head + 1) % self.max_n
         self.size -= 1
         # print("2pop_front self.head=",self.head)
         # print("2pop_front self.tail=",self.tail)
         # print("2pop_front self.size=",self.size)
-        return x
+        return tmp_cell
 
     def pop_back(self):
         if self.is_empty():
-            raise TypeError
+            raise DequeStackEmptyError
         # print("1pop_back self.tail=",self.tail)
-        # self.tail_backward()
         self.tail = (self.tail - 1) % self.len_cells
         # print("2pop_back self.tail=",self.tail)
-        x = self.cells[self.tail]
+        tmp_cell = self.cells[self.tail]
         self.cells[self.tail] = None
         self.size -= 1
-        return x
+        return tmp_cell
 
 
 if __name__ == '__main__':
@@ -128,7 +124,7 @@ if __name__ == '__main__':
     # print('deck_max_len=', deck_max_len)
     # print('commands_list=', commands_list)
 
-    new_stack = DeqStack(deck_max_len)
+    new_stack = DequeStack(deck_max_len)
 
     for i in commands_list:
         a, *b = i.split()
@@ -136,7 +132,9 @@ if __name__ == '__main__':
         # print("1 b=",b)
         try:
             result = getattr(new_stack, a)(*b)
-        except TypeError:
+        except DequeStackFullError:
+            print('error')
+        except DequeStackEmptyError:
             print('error')
         else:
             if result:

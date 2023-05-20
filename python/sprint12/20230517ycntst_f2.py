@@ -56,7 +56,15 @@
 # Формат вывода
 # Выведите единственное число — значение выражения.
 
+
+# 87465081
+
 import operator
+
+
+class StackDigitsEmptyError(Exception):
+    """Вызывается, когда StackDigits empty"""
+    pass
 
 
 class StackDigits:
@@ -65,7 +73,6 @@ class StackDigits:
 
     def __str__(self):
         return ' '.join(str(x) for x in self.items)
-        # return self.items
 
     def push(self, item):
         self.items.append(item)
@@ -74,36 +81,48 @@ class StackDigits:
         if self.items:
             return self.items.pop()
         else:
-            return 'Error Stack is empty'
+            raise StackDigitsEmptyError
 
 
-def polish_calc(exp_list):
-    result = list(exp_list)
+def polish_calc(expression):
+    # result = list(expression)
     # print(result)
     digits = StackDigits()
-    exp_dict = {
+    operators = {
         '+': operator.add,
         '-': operator.sub,
         '*': operator.mul,
         '/': operator.floordiv,
     }
-    result = 0
-    for i in exp_list:
-        if i not in exp_dict:
+    # result = 0
+    for i in expression:
+        if i not in operators:
             digits.push(int(i))
-            result = int(i)
+            # result = int(i)
         else:
             b = digits.pop()
             a = digits.pop()
-            result = exp_dict[i](a, b)
-            digits.push(result)
-    return result
+            # result = operators[i](a, b)
+            digits.push(operators[i](a, b))
+    return digits.pop()
+    # result = 0
+    # for i in expression:
+    #     if i not in operators:
+    #         digits.push(int(i))
+    #         result = int(i)
+    #     else:
+    #         b = digits.pop()
+    #         a = digits.pop()
+    #         result = operators[i](a, b)
+    #         digits.push(result)
+    # return digits.pop()
 
 
 if __name__ == '__main__':
     file = open("input.txt", "r")
     # В единственной строке дано выражение в обратной польской нотации.
-    exp_list = tuple(map(str, file.readline().split()))
+    expression = tuple(file.readline().split())
+    # exp_list = tuple(map(str, file.readline().split()))
     file.close()
-    result = polish_calc(exp_list)
+    result = polish_calc(expression)
     print(result)

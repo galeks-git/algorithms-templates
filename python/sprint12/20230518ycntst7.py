@@ -18,6 +18,10 @@
 # Формат вывода
 # Выведите «True» или «False».
 
+
+# 87465081
+
+
 class StackMax:
     def __init__(self):
         self.items = []
