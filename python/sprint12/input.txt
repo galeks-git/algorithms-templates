@@ -6,7 +6,6 @@
 3 4 +
 123
 
-
 7
 10
 push_front -855
@@ -16,6 +15,11 @@ pop_back
 push_back 844
 pop_back
 push_back 823
+
+
+
+
+
 
 334
 65

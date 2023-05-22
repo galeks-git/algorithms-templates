@@ -26,17 +26,17 @@
 
 # 87465081
 
-class DequeStackFullError(Exception):
+class DequeFullError(Exception):
     """Вызывается, когда DequeStack full"""
     pass
 
 
-class DequeStackEmptyError(Exception):
+class DequeEmptyError(Exception):
     """Вызывается, когда DequeStack empty"""
     pass
 
 
-class DequeStack:
+class Deque:
     def __init__(self, len_cells):
         self.cells = [None] * len_cells
         self.len_cells = len_cells
@@ -55,7 +55,7 @@ class DequeStack:
 
     def push_back(self, value):
         if self.is_full():
-            raise DequeStackFullError
+            raise DequeFullError
         if self.is_empty():
             self.tail = self.head
         self.cells[self.tail] = value
@@ -66,7 +66,7 @@ class DequeStack:
 
     def push_front(self, value):
         if self.is_full():
-            raise DequeStackFullError
+            raise DequeFullError
         if self.is_empty():
             self.tail = self.head
             # self.tail = (self.head + 1) % self.len_cells
@@ -76,7 +76,7 @@ class DequeStack:
 
     def pop_front(self):
         if self.is_empty():
-            raise DequeStackEmptyError
+            raise DequeEmptyError
         tmp_cell = self.cells[self.head]
         self.cells[self.head] = None
         # print("1pop_front self.head=",self.head)
@@ -91,7 +91,7 @@ class DequeStack:
 
     def pop_back(self):
         if self.is_empty():
-            raise DequeStackEmptyError
+            raise DequeEmptyError
         # print("1pop_back self.tail=",self.tail)
         self.tail = (self.tail - 1) % self.len_cells
         # print("2pop_back self.tail=",self.tail)
@@ -123,8 +123,9 @@ if __name__ == '__main__':
         commands_list.append(str(file.readline()).rstrip())
     # print('deck_max_len=', deck_max_len)
     # print('commands_list=', commands_list)
+    file.close()
 
-    new_stack = DequeStack(deck_max_len)
+    new_stack = Deque(deck_max_len)
 
     for i in commands_list:
         a, *b = i.split()
@@ -132,9 +133,7 @@ if __name__ == '__main__':
         # print("1 b=",b)
         try:
             result = getattr(new_stack, a)(*b)
-        except DequeStackFullError:
-            print('error')
-        except DequeStackEmptyError:
+        except (DequeEmptyError, DequeFullError):
             print('error')
         else:
             if result:

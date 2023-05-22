@@ -62,12 +62,12 @@
 import operator
 
 
-class StackDigitsEmptyError(Exception):
-    """Вызывается, когда StackDigits empty"""
-    pass
+# class StackDigitsEmptyError(Exception):
+#     """Вызывается, когда StackDigits empty"""
+#     pass
 
 
-class StackDigits:
+class Stack:
     def __init__(self):
         self.items = []
 
@@ -78,16 +78,19 @@ class StackDigits:
         self.items.append(item)
 
     def pop(self):
-        if self.items:
-            return self.items.pop()
-        else:
-            raise StackDigitsEmptyError
+        return self.items.pop()
+
+    # def pop(self):
+    #     if self.items:
+    #         return self.items.pop()
+    #     else:
+    #         raise StackDigitsEmptyError
 
 
 def polish_calc(expression):
     # result = list(expression)
     # print(result)
-    digits = StackDigits()
+    digits = Stack()
     operators = {
         '+': operator.add,
         '-': operator.sub,
@@ -100,10 +103,10 @@ def polish_calc(expression):
             digits.push(int(i))
             # result = int(i)
         else:
-            b = digits.pop()
-            a = digits.pop()
+            operand2 = digits.pop()
+            operand1 = digits.pop()
             # result = operators[i](a, b)
-            digits.push(operators[i](a, b))
+            digits.push(operators[i](operand1, operand2))
     return digits.pop()
     # result = 0
     # for i in expression:
