@@ -62,9 +62,10 @@
 import operator
 
 
-# class StackDigitsEmptyError(Exception):
-#     """Вызывается, когда StackDigits empty"""
-#     pass
+class StackEmptyError(Exception):
+    """Вызывается, когда Stack empty"""
+    # print('Stack is empty')
+    pass
 
 
 class Stack:
@@ -77,17 +78,26 @@ class Stack:
     def push(self, item):
         self.items.append(item)
 
-    def pop(self):
-        return self.items.pop()
-
     # def pop(self):
-    #     if self.items:
-    #         return self.items.pop()
-    #     else:
-    #         raise StackDigitsEmptyError
+    #     return self.items.pop()
+    # def peek(self):
+    #     return self.items[-1]
+
+    # def size(self):
+    #     return len(self.items) 
+
+    # def is_empty(self):
+    #     return len(self.items) == 0
+
+    def pop(self):
+        if self.items:
+            return self.items.pop()
+        raise StackEmptyError
 
 
 def polish_calc(expression):
+    # print('polish_calc begin')
+    # print("1 stack digits=",digits)
     # result = list(expression)
     # print(result)
     digits = Stack()
@@ -99,25 +109,28 @@ def polish_calc(expression):
     }
     # result = 0
     for i in expression:
+        # print("1 stack digits=",digits)
+        # print("1 i =",i)
         if i not in operators:
             digits.push(int(i))
             # result = int(i)
         else:
-            operand2 = digits.pop()
-            operand1 = digits.pop()
-            # result = operators[i](a, b)
-            digits.push(operators[i](operand1, operand2))
-    return digits.pop()
-    # result = 0
-    # for i in expression:
-    #     if i not in operators:
-    #         digits.push(int(i))
-    #         result = int(i)
-    #     else:
-    #         b = digits.pop()
-    #         a = digits.pop()
-    #         result = operators[i](a, b)
-    #         digits.push(result)
+            try:
+                operand2 = digits.pop()
+                operand1 = digits.pop()
+            except StackEmptyError:
+                print('Stack is empty. No operands for operation.')
+            else:
+                # print("     else operand2 =",operand2)
+                # print("     else operand1 =",operand1)
+                digits.push(operators[i](operand1, operand2))
+                # print("     2else stack digits=",digits)
+    try:
+        result = digits.pop()
+    except StackEmptyError:
+        print('Stack is empty. No result of operation.')
+    else:
+        return result
     # return digits.pop()
 
 
@@ -127,5 +140,6 @@ if __name__ == '__main__':
     expression = tuple(file.readline().split())
     # exp_list = tuple(map(str, file.readline().split()))
     file.close()
+    # print('begin')
     result = polish_calc(expression)
     print(result)

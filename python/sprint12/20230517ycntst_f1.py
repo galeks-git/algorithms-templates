@@ -41,7 +41,8 @@ class Deque:
         self.cells = [None] * len_cells
         self.len_cells = len_cells
         self.head = 0
-        self.tail = 1
+        self.tail = 0
+        # self.tail = 1
         self.size = 0
 
     def __str__(self):
@@ -56,8 +57,8 @@ class Deque:
     def push_back(self, value):
         if self.is_full():
             raise DequeFullError
-        if self.is_empty():
-            self.tail = self.head
+        # if self.is_empty():
+        #     self.tail = self.head
         self.cells[self.tail] = value
         # print("1push_back self.tail=",self.tail)
         self.tail = (self.tail + 1) % self.len_cells
@@ -67,8 +68,8 @@ class Deque:
     def push_front(self, value):
         if self.is_full():
             raise DequeFullError
-        if self.is_empty():
-            self.tail = self.head
+        # if self.is_empty():
+        #     self.tail = self.head
             # self.tail = (self.head + 1) % self.len_cells
         self.head = (self.head - 1) % self.len_cells
         self.cells[self.head] = value
