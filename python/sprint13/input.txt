@@ -1,0 +1,588 @@
+5
+alla 4 100
+gena 6 1000
+gosha 2 90
+rita 2 90
+timofey 4 80
+
+
+9
+5
+19 21 100 101 1 4 5 7 12
+
+5674
+1130
+6681 6685 6687 6691 6694 6695 6696 6697 6699 6700 6702 6704 6709 6710 6712 6713 6715 6717 6718 6720 6721 6723 6724 6726 6727 6729 6730 6731 6732 6733 6734 6735 6736 6738 6739 6740 6741 6742 6743 6744 6745 6748 6749 6751 6752 6753 6754 6755 6756 6757 6759 6760 6762 6763 6764 6765 6769 6770 6771 6772 6776 6777 6779 6780 6782 6785 6786 6787 6788 6793 6794 6796 6800 6802 6804 6805 6806 6812 6813 6814 6815 6817 6818 6819 6822 6823 6824 6825 6827 6829 6830 6833 6835 6837 6838 6841 6843 6851 6855 6858 6860 6861 6864 6867 6868 6869 6870 6873 6874 6877 6881 6882 6887 6889 6891 6892 6895 6898 6899 6900 6901 6903 6905 6907 6908 6910 6916 6918 6920 6922 6925 6926 6927 6931 6932 6933 6939 6940 6941 6942 6943 6944 6945 6946 6949 6952 6953 6954 6957 6958 6959 6960 6961 6962 6965 6967 6968 6971 6973 6974 6975 6977 6978 6980 6981 6982 6984 6986 6987 6989 6990 6991 6992 6994 6995 6997 6998 6999 7000 7001 7002 7005 7006 7007 7008 7010 7013 7014 7016 7020 7024 7026 7027 7030 7031 7032 7034 7036 7038 7042 7043 7044 7045
+
+
+
+1543
+6024
+1377 1391 1397 1399 1410 1413 1416 1419 1434 1443 1462 1469 1480 1483 1484 1492 1499 1500 1501 1509 1525 1527 1535 1538 1545 1553 1556 1569 1570 1571 1585 1589 1604 1610 1615 1620 1631 1633 1634 1638 1655 1657 1664 1678 1692 1693 1696 1697 1723 1727 1737 1739 1742 1745 1752 1756 1761 1763 1771 1772 1782 1785 1819 1820 1823 1825 1830 1837 1840 1857 1859 1864 1870 1876 1878 1884 1894 1897 1898 1902 1903 1921 1924 1929 1930 1931 1934 1936 1937 1943 1949 1964 1980 1992 1999 2007 2014 2016 2021 2041 2046 2047 2058 2060 2066 2067 2073 2077 2082 2102 2111 2114 2122 2126 2133 2147 2158 2160 2161 2163 2165 2172 2173 2181 2185 2193 2197 2203 2205 2207 2209 2211 2219 2231 2234 2243 2245 2265 2267 2271 2278 2283 2305 2306 2321 2327 2329 2353 2361 2367 2376 2381 2392 2400 2401 2406 2413 2414 2423 2426 2438 2443 2448 2454 2456 2473 2477 2488 2494 2495 2498 2501 2508 2512 2521 2527 2529 2530 2532 2535 2546 2551 2561 2564 2565 2580 2583 2584 2593 2595 2615 2617 2630 2636 2643 2649 2653 2656 2658 2661 2669 2674 2685
+
+
+
+11
+1
+1 2 3 4 5 6 7 8 9 10 0
+
+7
+4
+3 5 6 7 9 1 2
+
+1
+1
+1
+
+2
+1
+5 1
+
+8
+3
+1 2 3 5 6 7 9 0
+
+592
+401
+471 472 473 474 475 481 483 485 487 488 489 491 492 493 494 495 497 501 502 503 504 505 506 507 510 512 514 516 517 518 519 520 521 522 524 527 530 531 532 534 535 536 538 539 542 545 546 547 549 550 551 552 553 556 558 559 560 561 563 564 565 566 567 568 570 571 572 573 574 575 576 577 578 580 582 583 585 587 590 591 592 593 594 595 596 598 600 601 604 606 609 610 611 612 613 619 620 622 623 626 628 629 630 631 633 636 637 641 642 645 646 647 649 650 651 652 653 655 657 659 662 664 665 667 668 669 672 673 678 680 681 682 683 684 685 689 690 691 695 698 699 700 701 702 703 704 705 706 707 708 710 711 713 715 719 722 723 725 727 729 730 733 736 739 742 743 745 746 747 748 750 751 753 756 760 761 762 763 764 765 767 770 772 773 774 778 781 782 783 784 786 787 789 790 793 794 795 796 797 800 801 802 804 805 806 807 809 811 814 815 816 817 819 820 821 822 823 824 828 829 832 833 834 836 837 838 839 840 843 844 845 846 848 851 852 857 859 860 861 863 864 869 870 871 873 877 878 879 881 882 883 892 893 894 
+
+
+
+
+
+
+
+7
+4
+3 5 6 7 9 1 2
+
+1
+4
+1
+
+7
+3
+6 7 10 0 2 4 5
+
+
+
+9
+5
+19 21 100 101 1 4 5 7 12
+
+9
+5
+1 4 5 7 12 19 21 100 101
+
+
+
+7
+10
+push_front -855
+push_front 0
+pop_back
+pop_back
+push_back 844
+pop_back
+push_back 823
+
+
+7 2 + 4 * 2 +
+2 1 + 3 *
+-4 -5 +
+10 2 4 * -
+12 5 /
+3 4 +
+123
+
+
+
+
+
+
+
+334
+65
+pop_front
+pop_front
+pop_front
+push_back 505
+pop_front
+push_front -485
+push_front -92
+push_back 610
+push_back 691
+pop_front
+push_front 258
+push_front -863
+push_back 152
+push_front 763
+push_back 393
+pop_back
+push_back 862
+push_front 419
+push_front 559
+pop_back
+pop_back
+pop_front
+push_back -290
+pop_front
+pop_back
+push_back -662
+pop_back
+push_back 668
+pop_front
+pop_front
+pop_back
+pop_front
+push_front -176
+push_back -954
+
+7
+10
+push_front -855
+push_front 0
+pop_back
+pop_back
+push_back 844
+pop_back
+push_back 823
+
+
+20
+34
+push_front 284
+pop_back
+push_front 799
+pop_front
+pop_back
+pop_back
+pop_front
+push_back 792
+push_front 45
+push_front 374
+pop_back
+push_back 740
+pop_front
+pop_back
+
+
+7
+10
+push_front -855
+push_front 0
+pop_back
+pop_back
+push_back 844
+pop_back
+push_back 823
+
+7
+pop_front
+pop_front
+push_front 741
+push_front 648
+pop_front
+pop_back
+pop_front
+
+9
+8
+push_back -977
+pop_back
+pop_back
+push_front -86
+pop_back
+push_back 81
+pop_front
+pop_back
+pop_back
+
+7
+7
+pop_front
+pop_front
+push_front 741
+push_front 648
+pop_front
+pop_back
+pop_front
+
+4
+4
+push_front 861
+push_front -819
+pop_back
+pop_back
+
+
+
+
+
+
+
+
+7
+10
+push_front -855
+push_front 0
+pop_back
+pop_back
+push_back 844
+pop_back
+push_back 823
+
+7
+7
+pop_front
+pop_front
+push_front 741
+push_front 648
+pop_front
+pop_back
+pop_front
+
+
+4
+4
+push_front 861
+push_front -819
+pop_back
+pop_back
+
+
+
+
+{[()]}
+
+7
+7
+pop_front
+pop_front
+push_front 741
+push_front 648
+pop_front
+pop_back
+pop_front
+
+9
+8
+push_back -977
+pop_back
+pop_back
+push_front -86
+pop_back
+push_back 81
+pop_front
+pop_back
+pop_back
+
+7
+7
+pop_front
+pop_front
+push_front 741
+push_front 648
+pop_front
+pop_back
+pop_front
+
+4
+4
+push_front 861
+push_front -819
+pop_back
+pop_back
+
+
+
+
+
+
+
+
+7
+10
+push_front -855
+push_front 0
+pop_back
+pop_back
+push_back 844
+pop_back
+push_back 823
+
+7
+7
+pop_front
+pop_front
+push_front 741
+push_front 648
+pop_front
+pop_back
+pop_front
+
+
+4
+4
+push_front 861
+push_front -819
+pop_back
+pop_back
+
+
+-4 -5 +
+7 2 + 4 * 2 +
+2 1 + 3 *
+10 2 4 * -
+12 5 /
+3 4 +
+123
+
+
+{[()]}
+
+10
+pop
+pop
+push 4
+push -5
+push 7
+pop
+pop
+get_max
+pop
+get_max
+
+17
+get_max
+pop
+push -3
+get_max
+pop
+get_max
+push 7
+get_max
+pop
+push 9
+get_max
+push 8
+get_max
+push -9
+get_max
+push -10
+get_max
+
+10
+pop
+pop
+push 4
+push -5
+push 7
+pop
+pop
+get_max
+pop
+get_max
+
+8
+get_max
+push 7
+pop
+push -2
+push -1
+pop
+get_max
+get_max
+
+
+123
+-4 -5 +
+7 2 + 4 * 2 +
+2 1 + 3 *
+10 2 4 * -
+12 5 /
+3 4 +
+
+
+
+7
+7
+pop_front
+pop_front
+push_front 741
+push_front 648
+pop_front
+pop_back
+pop_front
+
+
+4
+4
+push_front 861
+push_front -819
+pop_back
+pop_back
+
+9
+8
+push_back -977
+pop_back
+pop_back
+push_front -86
+pop_back
+push_back 81
+pop_front
+pop_back
+pop_back
+
+
+
+7
+10
+push_front -855
+push_front 0
+pop_back
+pop_back
+push_back 844
+pop_back
+push_back 823
+
+4
+4
+push_front 861
+push_front -819
+pop_back
+pop_back
+
+6
+get_max
+get_max
+pop
+pop
+push 2
+pop
+
+7
+get_max
+pop
+pop
+pop
+push 10
+get_max
+push -9
+
+8
+get_max
+push 7
+pop
+push -2
+push -1
+pop
+get_max
+get_max
+
+
+3
+1231
+2..2
+2..2
+2..2
+
+
+20
+10 13 31 35 39 0 0 59 0 66 68 73 74 0 0 0 87 89 96 99
+
+20
+0 0 20 0 0 0 0 40 0 0 65 73 77 0 79 0 82 0 0 0
+
+3
+1231
+2..2
+2..2
+2..2
+
+
+
+3
+1231
+2..2
+2..2
+2..2
+
+1
+1999
+5436
+4368
+1712
+
+
+
+
+
+
+
+3
+1231
+2..2
+2..2
+2..2
+
+1
+1999
+5436
+4368
+1712
+
+3
+1231
+2..2
+2..2
+2..2
+
+
+
+14
+0 3 41 0 0 0 0 0 49 0 0 56 0 88
+
+20
+10 13 31 35 39 0 0 59 0 66 68 73 74 0 0 0 87 89 96 99
+
+10
+1 2 3 4 0 6 7 8 9 10
+
+20
+3 15 0 22 31 32 0 41 0 0 50 0 0 66 0 76 77 82 0 89
+
+3
+1231
+2..2
+2..2
+2..2
+
+1
+1999
+5436
+4368
+1712
+
+3
+1231
+2..2
+2..2
+2..2
+
+
+10
+1 2 3 4 0 6 7 8 9 10
+
+
+
+3
+1 1 1 5
+
+3
+3 2 1
+
+5
+1 1 5 5 5
+
