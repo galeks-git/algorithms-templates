@@ -37,14 +37,737 @@
 # Для отсортированного списка участников выведите по порядку их логины по одному в строке.
 
 
+# # ------------------------------
+# # 20230529 try1  2error tl
+# # ------------------------------
+
+# from operator import gt, eq, lt
+# # import random
+
+# def compare_pipl(pipl1,pipl2):
+#     pipl1_tasks=int(pipl1[1])
+#     pipl2_tasks=int(pipl2[1])
+#     pipl1_fine=int(pipl1[2])
+#     pipl2_fine=int(pipl2[2])
+#     print('pipl1_name=',pipl1[0])
+#     print('     pipl1_tasks=',pipl1_tasks)
+#     print('         pipl1_fine=',pipl1_fine)
+#     print('pipl2_name=',pipl2[0])
+#     print('     pipl2_tasks=',pipl2_tasks)
+#     print('         pipl2_fine=',pipl2_fine)
+#     # if int(pipl1[1]) > int(pipl2[1]):
+#     if gt(pipl1_tasks, pipl2_tasks):
+#         print('ge(pipl1_tasks, pipl2_tasks)')
+#         return True
+#     # elif pipl1[1] == pipl2[1]:
+#     elif eq(pipl1_tasks, pipl2_tasks):
+#         print('eq(pipl1_tasks, pipl2_tasks)')
+#         # if pipl1[2] > pipl2[2]:
+#         if lt(pipl1_fine, pipl2_fine):
+#             print('ge(pipl1_fine, pipl2_fine)')
+#             return True
+#         # elif pipl1[2] == pipl2[2]:
+#         elif eq(pipl1_fine, pipl2_fine):
+#             print('eq(pipl1_fine, pipl2_fine)')
+#             # if pipl1[2] < pipl2[2]:
+#             if lt(pipl1[0], pipl2[0]):
+#                 print('lt(pipl1[0], pipl2[0])')
+#                 return True
+#     print('end false')
+#     return False
+
+# # функция partition(array, pivot):
+# #     left = элементы array, меньшие pivot
+# #     center = элементы array, равные pivot
+# #     right = элементы array, большие pivot
+# #     return left, center, right
+
+# # функция quicksort(array):
+# #     if length(array) < 2:  # базовый случай,
+# #         return array       # массивы с 0 или 1 элементами фактически отсортированы
+# #     else:  # рекурсивный случай
+# #         pivot = случайный элемент из array
+# #         left, center, right = partition(array, pivot)
+# #         return quicksort(left) + center + quicksort(right)
+
+# def partition(array, pivot):
+#     # left = []
+#     # # элементы array, меньшие pivot
+#     # center =[]
+#     # # элементы array, равные pivot
+#     # right=[]
+#     # # элементы array, большие pivot
+#     # for i in array:
+#     #     # print('pivot=',pivot)
+#     #     # print('arrai[i]=',i)
+#     #     if compare_pipl(i, pivot):
+#     #     # if i < pivot:
+#     #         # print('     left.append(i)')
+#     #         left.append(i)
+#     #     elif compare_pipl(pivot,i):
+#     #     # elif i > pivot:
+#     #         # print('     right.append(i)')
+#     #         right.append(i)
+#     #     else:
+#     #     # elif i == pivot:
+#     #         # print('     center.append(i)')
+#     #         center.append(i)
+#     # return left, center, right
+
+
+#     left = []
+#     # элементы array, меньшие pivot
+#     center =[]
+#     # элементы array, равные pivot
+#     right=[]
+#     left_index = 0
+#     right_index=len(array)-1
+#     print('pivot=',pivot)
+#     while(left_index<=right_index):
+#         print('left_index=',left_index)
+#         print('     array[left_index]=',array[left_index])
+#         print('right_index=',right_index)
+#         print('     array[right_index]=',array[right_index])
+#         if compare_pipl(array[left_index], pivot):
+#         # if compare_pipl(pivot,array[left_index]):
+#             print('     left.append(i)')
+#             left.append(array[left_index])
+#             left_index+=1
+#             print('left=', left)
+#         elif compare_pipl(pivot,array[right_index]):
+#             print('     right.append(i)')
+#             right.append(array[right_index])
+#             right_index-=1
+#             print('right=', right)
+#         elif eq(pivot,array[right_index]):
+#             print('     eq right')
+#             center.append(pivot)
+#             right_index-=1
+#             print('center=', center)
+#             print('right=', right)
+#         elif eq(array[left_index], pivot):
+#             print('     eq left')
+#             center.append(pivot)
+#             left_index+=1
+#             print('center=', center)
+#             print('left=', left)
+#         else:
+#             print('     swap')
+#             print('left=', left)
+#             print('center=', center)
+#             print('right=', right)
+#             print('left_index=',left_index)
+#             print('     array[left_index]=',array[left_index])
+#             print('right_index=',right_index)
+#             print('     array[right_index]=',array[right_index])
+#             left.append(array[right_index])
+#             right.append(array[left_index])
+#             left_index+=1
+#             right_index-=1
+#             print('left=', left)
+#             print('center=', center)
+#             print('right=', right)
+
+#             # tmp=array[left_index]
+#             # array[left_index]=array[right_index]
+#             # array[right_index]=tmp
+#             # # swap(array[left],array[right])
+#             # left_index+=1
+#             # right_index-=1
+    
+#     print('end left=', left)
+#     print('end center=', center)
+#     print('end right=', right)
+#     return left, center, right
+
+
+# def quicksort(array):
+#     len_arr=len(array)
+#     if  len_arr< 2:  # базовый случай,
+#         return array       # массивы с 0 или 1 элементами фактически отсортированы
+#     else:  # рекурсивный случай
+#         # pivot = random(array)
+#         pivot = array[len_arr//2]
+#         left, center, right = partition(array, pivot)
+#         return quicksort(left) + center + quicksort(right)
+
+# def fast_sort(unsort_list, len_unsort_list):
+#     # # result_list=[len_unsort_list]
+#     # result_list=[]
+#     # for i in range(len_unsort_list):
+#     #     print('i=',i)
+#     #     # result_list[i]=unsort_list[i]
+#     #     result_list.append(unsort_list[i])
+#     # return result_list
+
+#     # result_list=[]
+#     # for i in range(len_unsort_list):
+#     #     # print('i=',i)
+#     #     result_list.append(unsort_list[i])
+
+#     #     item_to_insert = unsort_list[i]
+#     #     j = i
+#     #     while (j > 0 and compare_pipl(item_to_insert, unsort_list[j-1])):
+#     #         unsort_list[j] = unsort_list[j-1]
+#     #         j -= 1
+#     #     unsort_list[j] = item_to_insert
+
+#     # return unsort_list
+#     result_list=quicksort(unsort_list)
+#     print('result_list=',result_list)
+#     return result_list
+
+
+
+# if __name__ == '__main__':
+#     file = open("input.txt", "r")
+#     # В первой строке задано число участников n
+#     pipl_count = int(file.readline())
+#     #  В каждой из следующих n строк задана информация про одного из участников.
+#     # i-й участник описывается тремя параметрами:
+
+#     # уникальным логином (строкой из маленьких латинских букв длиной не более 20)
+#     # числом решённых задач Pi
+#     # штрафом Fi
+#     # Fi и Pi — целые числа, лежащие в диапазоне от 0 до 109.
+
+#     pipl_list = []
+#     for i in range(pipl_count):
+#         # pipl_list.append(str(file.readline()).rstrip())
+#         pipl_list.append(str(file.readline()).rstrip().split())
+#     file.close()    
+
+#     # print('begin')
+#     # print('pipl_count=', pipl_count)
+#     # print('pipl_list=', pipl_list)
+#     pipl_sorted=fast_sort(pipl_list,pipl_count)
+#     for i in pipl_sorted:
+#         print(i[0])
+
+
+# # ------------------------------
+# # 20230529 try2
+# # ------------------------------
+
+# from operator import gt, eq, lt
+# # import random
+
+# def compare_pipl(pipl1,pipl2):
+#     pipl1_tasks=int(pipl1[1])
+#     pipl2_tasks=int(pipl2[1])
+#     pipl1_fine=int(pipl1[2])
+#     pipl2_fine=int(pipl2[2])
+#     # print('pipl1_name=',pipl1[0])
+#     # print('     pipl1_tasks=',pipl1_tasks)
+#     # print('         pipl1_fine=',pipl1_fine)
+#     # print('pipl2_name=',pipl2[0])
+#     # print('     pipl2_tasks=',pipl2_tasks)
+#     # print('         pipl2_fine=',pipl2_fine)
+#     # if int(pipl1[1]) > int(pipl2[1]):
+#     if gt(pipl1_tasks, pipl2_tasks):
+#         # print('ge(pipl1_tasks, pipl2_tasks)')
+#         return True
+#     # elif pipl1[1] == pipl2[1]:
+#     elif eq(pipl1_tasks, pipl2_tasks):
+#         # print('eq(pipl1_tasks, pipl2_tasks)')
+#         # if pipl1[2] > pipl2[2]:
+#         if lt(pipl1_fine, pipl2_fine):
+#             # print('ge(pipl1_fine, pipl2_fine)')
+#             return True
+#         # elif pipl1[2] == pipl2[2]:
+#         elif eq(pipl1_fine, pipl2_fine):
+#             # print('eq(pipl1_fine, pipl2_fine)')
+#             # if pipl1[2] < pipl2[2]:
+#             if lt(pipl1[0], pipl2[0]):
+#                 # print('lt(pipl1[0], pipl2[0])')
+#                 return True
+#     # print('end false')
+#     return False
+
+# # функция partition(array, pivot):
+# #     left = элементы array, меньшие pivot
+# #     center = элементы array, равные pivot
+# #     right = элементы array, большие pivot
+# #     return left, center, right
+
+# # функция quicksort(array):
+# #     if length(array) < 2:  # базовый случай,
+# #         return array       # массивы с 0 или 1 элементами фактически отсортированы
+# #     else:  # рекурсивный случай
+# #         pivot = случайный элемент из array
+# #         left, center, right = partition(array, pivot)
+# #         return quicksort(left) + center + quicksort(right)
+
+# def partition(array, pivot_index,first_index, end_index):
+#     print('partition')
+#     # left = []
+#     # # элементы array, меньшие pivot
+#     # center =[]
+#     # # элементы array, равные pivot
+#     # right=[]
+#     # # элементы array, большие pivot
+#     # for i in array:
+#     #     # print('pivot=',pivot)
+#     #     # print('arrai[i]=',i)
+#     #     if compare_pipl(i, pivot):
+#     #     # if i < pivot:
+#     #         # print('     left.append(i)')
+#     #         left.append(i)
+#     #     elif compare_pipl(pivot,i):
+#     #     # elif i > pivot:
+#     #         # print('     right.append(i)')
+#     #         right.append(i)
+#     #     else:
+#     #     # elif i == pivot:
+#     #         # print('     center.append(i)')
+#     #         center.append(i)
+#     # return left, center, right
+
+
+#     # left = []
+#     # # элементы array, меньшие pivot
+#     # center =[]
+#     # # элементы array, равные pivot
+#     # right=[]
+#     # left_index = 0
+#     # right_index=len(array)-1
+#     left_index = first_index
+#     right_index=end_index
+#     pivot=array[pivot_index]
+#     print('pivot=',pivot)
+#     print('first_index=',first_index)
+#     print('end_index=',end_index)
+#     print('array=',array)
+#     # while(left_index<=right_index):
+#     # while(left_index<pivot_index or pivot_index<right_index):
+#     while(left_index!=right_index):
+#         print('left_index=',left_index)
+#         print('     array[left_index]=',array[left_index])
+#         print('right_index=',right_index)
+#         print('     array[right_index]=',array[right_index])
+#         if compare_pipl(array[left_index], pivot):
+#         # if compare_pipl(pivot,array[left_index]):
+#             print('     left.append(i)')
+#             # left.append(array[left_index])
+#             left_index+=1
+#             # print('left=', left)
+#         elif compare_pipl(pivot,array[right_index]):
+#             print('     right.append(i)')
+#             # right.append(array[right_index])
+#             right_index-=1
+#             # print('right=', right)
+#         elif eq(array[left_index], pivot):
+#             print('     eq left')
+#             # center.append(pivot)
+#             # tmp=array[left_index]
+#             array[left_index]=array[right_index]
+#             array[right_index]=pivot
+#             left_index+=1
+#             pivot_index=right_index
+#             # print('center=', center)
+#             # print('left=', left)
+#         elif eq(pivot,array[right_index]):
+#             print('     eq right')
+#             # center.append(pivot)
+#             # tmp=array[left_index]
+#             array[right_index]=array[left_index]
+#             array[left_index]=pivot
+#             right_index-=1
+#             pivot_index=left_index
+#             # print('center=', center)
+#             # print('right=', right)
+#         else:
+#             print('     swap')
+#             # print('left=', left)
+#             # print('center=', center)
+#             # print('right=', right)
+#             print('left_index=',left_index)
+#             print('     array[left_index]=',array[left_index])
+#             print('right_index=',right_index)
+#             print('     array[right_index]=',array[right_index])
+#             # left.append(array[right_index])
+#             # right.append(array[left_index])
+#             # left_index+=1
+#             # right_index-=1
+
+#             tmp=array[left_index]
+#             array[left_index]=array[right_index]
+#             array[right_index]=tmp
+#             # swap(array[left],array[right])
+#             left_index+=1
+#             right_index-=1
+#             print('array=',array)
+    
+#     #         print('left=', left)
+#     #         print('center=', center)
+#     #         print('right=', right)
+
+#     # print('end left=', left)
+#     # print('end center=', center)
+#     # print('end right=', right)
+#     # return left, center, right
+#     print('end part array=',array)
+#     return pivot_index
+
+
+# def quicksort(array,first_index,end_index):
+#     print('quicksort')
+#     print('first_index=',first_index)
+#     print('end_index=',end_index)
+#     print('array=',array)
+#     # len_arr=len(array)
+#     len_arr=end_index - first_index+1
+#     half_len_arr=(len_arr//2)+first_index
+#     print('half_len_arr=',half_len_arr)
+#     if  len_arr< 2:  # базовый случай,
+#         return array       # массивы с 0 или 1 элементами фактически отсортированы
+#     else:  # рекурсивный случай
+#         # pivot = random(array)
+#         # pivot = array[half_len_arr]
+#         pivot_index=partition(array, half_len_arr,first_index,end_index)
+#         quicksort(array, first_index, pivot_index-1)
+#         quicksort(array, pivot_index+1,end_index)
+#         return
+#         # left, center, right = 
+#         # return quicksort(left) + center + quicksort(right)
+
+# def fast_sort(unsort_list, len_unsort_list):
+#     # result_list=quicksort(unsort_list,0,len_unsort_list-1)
+#     # print('result_list=',result_list)
+#     # return result_list
+
+#     print('fast_sort')
+#     print('unsort_list=',unsort_list)
+#     quicksort(unsort_list,0,len_unsort_list-1)
+#     print('end unsort_list=',unsort_list)
+#     return
+
+
+
+# if __name__ == '__main__':
+#     file = open("input.txt", "r")
+#     # В первой строке задано число участников n
+#     pipl_count = int(file.readline())
+#     #  В каждой из следующих n строк задана информация про одного из участников.
+#     # i-й участник описывается тремя параметрами:
+
+#     # уникальным логином (строкой из маленьких латинских букв длиной не более 20)
+#     # числом решённых задач Pi
+#     # штрафом Fi
+#     # Fi и Pi — целые числа, лежащие в диапазоне от 0 до 109.
+
+#     pipl_list = []
+#     for i in range(pipl_count):
+#         # pipl_list.append(str(file.readline()).rstrip())
+#         pipl_list.append(str(file.readline()).rstrip().split())
+#     file.close()    
+
+#     # print('begin')
+#     # print('pipl_count=', pipl_count)
+#     # print('pipl_list=', pipl_list)
+#     # pipl_sorted=fast_sort(pipl_list,pipl_count)
+#     # for i in pipl_sorted:
+#     #     print(i[0])
+#     fast_sort(pipl_list,pipl_count)
+#     for i in pipl_list:
+#         print(i[0])
+
 
 # ------------------------------
-# 20230527 try1 pachka
-# https://app.pachca.com/chats/3834079?thread_id=1102945
+# 20230529 try3
 # ------------------------------
+
+# from operator import gt, eq, lt
+# # import random
+
+
+# # def compare_pipl(pipl1,pipl2):
+# #     pipl1_tasks=int(pipl1[1])
+# #     pipl2_tasks=int(pipl2[1])
+# #     pipl1_fine=int(pipl1[2])
+# #     pipl2_fine=int(pipl2[2])
+# #     # print('pipl1_name=',pipl1[0])
+# #     # print('     pipl1_tasks=',pipl1_tasks)
+# #     # print('         pipl1_fine=',pipl1_fine)
+# #     # print('pipl2_name=',pipl2[0])
+# #     # print('     pipl2_tasks=',pipl2_tasks)
+# #     # print('         pipl2_fine=',pipl2_fine)
+# #     # if int(pipl1[1]) > int(pipl2[1]):
+# #     if gt(pipl1_tasks, pipl2_tasks):
+# #         # print('ge(pipl1_tasks, pipl2_tasks)')
+# #         return True
+# #     # elif pipl1[1] == pipl2[1]:
+# #     elif eq(pipl1_tasks, pipl2_tasks):
+# #         # print('eq(pipl1_tasks, pipl2_tasks)')
+# #         # if pipl1[2] > pipl2[2]:
+# #         if lt(pipl1_fine, pipl2_fine):
+# #             # print('ge(pipl1_fine, pipl2_fine)')
+# #             return True
+# #         # elif pipl1[2] == pipl2[2]:
+# #         elif eq(pipl1_fine, pipl2_fine):
+# #             # print('eq(pipl1_fine, pipl2_fine)')
+# #             # if pipl1[2] < pipl2[2]:
+# #             if lt(pipl1[0], pipl2[0]):
+# #                 # print('lt(pipl1[0], pipl2[0])')
+# #                 return True
+# #     # print('end false')
+# #     return False
+
+
+# def compare_pipl(pipl1,pipl2):
+#     pipl1_tasks=int(pipl1[1])
+#     pipl2_tasks=int(pipl2[1])
+#     pipl1_fine=int(pipl1[2])
+#     pipl2_fine=int(pipl2[2])
+#     # print('pipl1_name=',pipl1[0])
+#     # print('     pipl1_tasks=',pipl1_tasks)
+#     # print('         pipl1_fine=',pipl1_fine)
+#     # print('pipl2_name=',pipl2[0])
+#     # print('     pipl2_tasks=',pipl2_tasks)
+#     # print('         pipl2_fine=',pipl2_fine)
+#     # if int(pipl1[1]) > int(pipl2[1]):
+#     # if gt(pipl1_tasks, pipl2_tasks):
+#     if (pipl1_tasks > pipl2_tasks):
+#         # print('ge(pipl1_tasks, pipl2_tasks)')
+#         return True
+#     # elif pipl1[1] == pipl2[1]:
+#     # elif eq(pipl1_tasks, pipl2_tasks):
+#     elif (pipl1_tasks == pipl2_tasks):
+#         # print('eq(pipl1_tasks, pipl2_tasks)')
+#         # if pipl1[2] > pipl2[2]:
+#         # if lt(pipl1_fine, pipl2_fine):
+#         if (pipl1_fine < pipl2_fine):
+#             # print('ge(pipl1_fine, pipl2_fine)')
+#             return True
+#         # elif pipl1[2] == pipl2[2]:
+#         # elif eq(pipl1_fine, pipl2_fine):
+#         elif (pipl1_fine== pipl2_fine):
+#             # print('eq(pipl1_fine, pipl2_fine)')
+#             # if pipl1[2] < pipl2[2]:
+#             # if lt(pipl1[0], pipl2[0]):
+#             if (pipl1[0]< pipl2[0]):
+#                 # print('lt(pipl1[0], pipl2[0])')
+#                 return True
+#     # print('end false')
+#     return False
+
+
+# # функция partition(array, pivot):
+# #     left = элементы array, меньшие pivot
+# #     center = элементы array, равные pivot
+# #     right = элементы array, большие pivot
+# #     return left, center, right
+
+# # функция quicksort(array):
+# #     if length(array) < 2:  # базовый случай,
+# #         return array       # массивы с 0 или 1 элементами фактически отсортированы
+# #     else:  # рекурсивный случай
+# #         pivot = случайный элемент из array
+# #         left, center, right = partition(array, pivot)
+# #         return quicksort(left) + center + quicksort(right)
+
+
+# # def swapList(arr, index1, index2):
+# #     arr[index1], arr[index2] = arr[index2], arr[index1]
+# #     return
+
+
+# def partition(array, pivot_index,first_index, end_index):
+#     print('partition')
+#     # left = []
+#     # # элементы array, меньшие pivot
+#     # center =[]
+#     # # элементы array, равные pivot
+#     # right=[]
+#     # # элементы array, большие pivot
+#     # for i in array:
+#     #     # print('pivot=',pivot)
+#     #     # print('arrai[i]=',i)
+#     #     if compare_pipl(i, pivot):
+#     #     # if i < pivot:
+#     #         # print('     left.append(i)')
+#     #         left.append(i)
+#     #     elif compare_pipl(pivot,i):
+#     #     # elif i > pivot:
+#     #         # print('     right.append(i)')
+#     #         right.append(i)
+#     #     else:
+#     #     # elif i == pivot:
+#     #         # print('     center.append(i)')
+#     #         center.append(i)
+#     # return left, center, right
+
+
+#     # left = []
+#     # # элементы array, меньшие pivot
+#     # center =[]
+#     # # элементы array, равные pivot
+#     # right=[]
+#     # left_index = 0
+#     # right_index=len(array)-1
+#     left_index = first_index
+#     right_index=end_index
+#     pivot=array[pivot_index]
+#     print('pivot=',pivot)
+#     print('first_index=',first_index)
+#     print('end_index=',end_index)
+#     print('array=',array)
+#     # while(left_index<=right_index):
+#     # while(left_index<pivot_index or pivot_index<right_index):
+#     while(left_index!=right_index):
+#         print('left_index=',left_index)
+#         print('     array[left_index]=',array[left_index])
+#         print('right_index=',right_index)
+#         print('     array[right_index]=',array[right_index])
+#         if compare_pipl(array[left_index], pivot):
+#         # if compare_pipl(pivot,array[left_index]):
+#             print('     left.append(i)')
+#             # left.append(array[left_index])
+#             left_index+=1
+#             # print('left=', left)
+#         elif compare_pipl(pivot,array[right_index]):
+#             print('     right.append(i)')
+#             # right.append(array[right_index])
+#             right_index-=1
+#             # print('right=', right)
+#         elif eq(array[left_index], pivot):
+#             print('     eq left')
+#             # center.append(pivot)
+#             # tmp=array[left_index]
+#             # swapList(array, right_index, left_index):
+#             array[left_index]=array[right_index]
+#             array[right_index]=pivot
+#             left_index+=1
+#             pivot_index=right_index
+#             # print('center=', center)
+#             # print('left=', left)
+#         elif eq(pivot,array[right_index]):
+#             print('     eq right')
+#             # center.append(pivot)
+#             # tmp=array[left_index]
+#             # swapList(array, right_index, left_index):
+#             array[right_index]=array[left_index]
+#             array[left_index]=pivot
+#             right_index-=1
+#             pivot_index=left_index
+#             # print('center=', center)
+#             # print('right=', right)
+#         else:
+#             print('     swap')
+#             # print('left=', left)
+#             # print('center=', center)
+#             # print('right=', right)
+#             print('left_index=',left_index)
+#             print('     array[left_index]=',array[left_index])
+#             print('right_index=',right_index)
+#             print('     array[right_index]=',array[right_index])
+#             # left.append(array[right_index])
+#             # right.append(array[left_index])
+#             # left_index+=1
+#             # right_index-=1
+
+#             # swapList(array, right_index, left_index):
+
+#             tmp=array[left_index]
+#             array[left_index]=array[right_index]
+#             array[right_index]=tmp
+#             # swap(array[left],array[right])
+#             left_index+=1
+#             right_index-=1
+#             print('array=',array)
+    
+#     #         print('left=', left)
+#     #         print('center=', center)
+#     #         print('right=', right)
+
+#     # print('end left=', left)
+#     # print('end center=', center)
+#     # print('end right=', right)
+#     # return left, center, right
+#     print('end part array=',array)
+#     return pivot_index
+
+
+# def quicksort(array,first_index,end_index):
+#     print('quicksort')
+#     print('first_index=',first_index)
+#     print('end_index=',end_index)
+#     print('array=',array)
+#     # len_arr=len(array)
+#     len_arr=end_index - first_index+1
+#     half_len_arr=(len_arr//2)+first_index
+#     print('half_len_arr=',half_len_arr)
+#     if  len_arr< 2:  # базовый случай,
+#         return array       # массивы с 0 или 1 элементами фактически отсортированы
+#     else:  # рекурсивный случай
+#         # pivot = random(array)
+#         # pivot = array[half_len_arr]
+#         pivot_index=partition(array, half_len_arr,first_index,end_index)
+#         quicksort(array, first_index, pivot_index-1)
+#         quicksort(array, pivot_index+1,end_index)
+#         return
+#         # left, center, right = 
+#         # return quicksort(left) + center + quicksort(right)
+
+# def fast_sort(unsort_list, len_unsort_list):
+#     # result_list=quicksort(unsort_list,0,len_unsort_list-1)
+#     # print('result_list=',result_list)
+#     # return result_list
+
+#     print('fast_sort')
+#     print('unsort_list=',unsort_list)
+#     quicksort(unsort_list,0,len_unsort_list-1)
+#     print('end unsort_list=',unsort_list)
+#     return
+
+
+
+# if __name__ == '__main__':
+#     file = open("input.txt", "r")
+#     # В первой строке задано число участников n
+#     pipl_count = int(file.readline())
+#     #  В каждой из следующих n строк задана информация про одного из участников.
+#     # i-й участник описывается тремя параметрами:
+
+#     # уникальным логином (строкой из маленьких латинских букв длиной не более 20)
+#     # числом решённых задач Pi
+#     # штрафом Fi
+#     # Fi и Pi — целые числа, лежащие в диапазоне от 0 до 109.
+
+#     pipl_list = []
+#     for i in range(pipl_count):
+#         # pipl_list.append(str(file.readline()).rstrip())
+#         pipl_list.append(str(file.readline()).rstrip().split())
+#     file.close()    
+
+#     # print('begin')
+#     # print('pipl_count=', pipl_count)
+#     # print('pipl_list=', pipl_list)
+#     # pipl_sorted=fast_sort(pipl_list,pipl_count)
+#     # for i in pipl_sorted:
+#     #     print(i[0])
+#     fast_sort(pipl_list,pipl_count)
+#     for i in pipl_list:
+#         print(i[0])
+
+
+
+
+
+
+
+
+
+
+#    def __init__(self, name: str, solved: str, penalty: str) -> None:
+#         self.name: str = name
+#         self.solved: int = int(solved)
+#         self.penalty: int = int(penalty)
+
+
 
 # from dataclasses import dataclass
-# from typing import List, Tuple
+# from typing import List
 
 
 # # id = 87563686
@@ -61,8 +784,8 @@
 
 #     def __lt__(self, other):
 #         return (
-#             (self.solved, other.penalties, self.name)
-#             < (other.solved, self.penalties, other.name)
+#             (-int(self.solved), int(self.penalties), self.name)
+#             < (-int(other.solved), int(other.penalties), other.name)
 #         )
 
 
@@ -89,26 +812,9 @@
 #     effective_quick_sort(competitors, left, end)
 
 
-# # def data_sort(competitor: Competitor) -> List[Tuple[int, int, str]]:
-# #     parsing_result = Competitor(*competitor)
-# #     return [
-# #         -int(parsing_result.solved),
-# #         int(parsing_result.penalties),
-# #         str(parsing_result.name)
-# #     ]
-
-
-# # def read_input() -> List[Competitor]:
-# #     quantity = int(input())
-# #     users = [Competitor(*input().split()) for _ in range(quantity)]
-# #     return users
-
 # def read_input() -> List[Competitor]:
-#     file = open("input.txt", "r")
-#     quantity = int(file.readline())
-#     users = [Competitor(*file.readline().split()) for _ in range(quantity)]
-#     print('quantity=', quantity)
-#     print('users=', users)
+#     quantity = int(input())
+#     users = [Competitor(*input().split()) for _ in range(quantity)]
 #     return users
 
 
@@ -127,244 +833,274 @@
 
 
 
+# # ------------------------------
+# # 20230529 try4
+# # ------------------------------
 
-# ------------------------------
-# 20230527 try2 pachka
-# https://app.pachca.com/chats/3834079?thread_id=1121911
-# ------------------------------
-# import random
+# from operator import gt, eq, lt
 
-
-# class Competitor:
-#     def __init__(self, name, problems_solved, fine):
-#         self.name = name
-#         self.problems_solved = int(problems_solved)
-#         self.fine = int(fine)
-
-#     def __str__(self):
-#         return f'{self.name}'
-
-#     def __lt__(self, other):
-#         if self.problems_solved > other.problems_solved:
+# def compare_pipl(pipl1,pipl2):
+#     pipl1_tasks=int(pipl1[1])
+#     pipl2_tasks=int(pipl2[1])
+#     pipl1_fine=int(pipl1[2])
+#     pipl2_fine=int(pipl2[2])
+#     if (pipl1_tasks > pipl2_tasks):
+#         return True
+#     elif (pipl1_tasks == pipl2_tasks):
+#         if (pipl1_fine < pipl2_fine):
 #             return True
-#         if self.problems_solved == other.problems_solved:
-#             if self.fine < other.fine:
+#         elif (pipl1_fine== pipl2_fine):
+#             if (pipl1[0]< pipl2[0]):
 #                 return True
-#             if self.fine == other.fine:
-#                 if self.name < other.name:
-#                     return True
-#         return False
+#     return False
 
-
-# def in_place_partition(array, pivot):
-#     left = 0
-#     right = len(array) - 1
-#     while left <= right:
-#         if array[left] > pivot and (pivot > array[right] or pivot == array[right]):
-#             array[left], array[right] = array[right], array[left]
-#             left += 1
-#             right -= 1
-#         elif array[left] > pivot and (array[right] > pivot or array[right] == pivot):
-#             right -= 1
-#         elif (array[left] < pivot or array[left] == pivot) and array[right] < pivot:
-#             left += 1
+# def partition(array, pivot_index,first_index, end_index):
+#     left_index = first_index
+#     right_index=end_index
+#     pivot=array[pivot_index]
+#     while(left_index!=right_index):
+#         if compare_pipl(array[left_index], pivot):
+#             left_index+=1
+#         elif compare_pipl(pivot,array[right_index]):
+#             right_index-=1
+#         elif eq(array[left_index], pivot):
+#             array[left_index]=array[right_index]
+#             array[right_index]=pivot
+#             left_index+=1
+#             pivot_index=right_index
+#         elif eq(pivot,array[right_index]):
+#             array[right_index]=array[left_index]
+#             array[left_index]=pivot
+#             right_index-=1
+#             pivot_index=left_index
 #         else:
-#             right -= 1
-#             left += 1
-#     return array, left
+#             tmp=array[left_index]
+#             array[left_index]=array[right_index]
+#             array[right_index]=tmp
+#             left_index+=1
+#             right_index-=1
+#     return pivot_index
 
 
-# def optimised_quick_sort(array):
-#     if len(array) < 2:
-#         return array
-#     else:
-#         pivot = random.choice(array)
-#         partition_result = in_place_partition(array, pivot)
-#         left_part_end = partition_result[1]
-#         left = partition_result[0][:left_part_end]
-#         right = partition_result[0][left_part_end:]
-#         return optimised_quick_sort(left) + optimised_quick_sort(right)
+# def quicksort(array,first_index,end_index):
+#     len_arr=end_index - first_index+1
+#     half_len_arr=(len_arr//2)+first_index
+#     if  len_arr< 2:  # базовый случай,
+#         return array       # массивы с 0 или 1 элементами фактически отсортированы
+#     else:  # рекурсивный случай
+#         pivot_index=partition(array, half_len_arr,first_index,end_index)
+#         quicksort(array, first_index, pivot_index-1)
+#         quicksort(array, pivot_index+1,end_index)
+#         return
+
+# def fast_sort(unsort_list, len_unsort_list):
+#     quicksort(unsort_list,0,len_unsort_list-1)
+#     return
+
 
 
 # if __name__ == '__main__':
 #     file = open("input.txt", "r")
-#     competitors = []
-#     number_of_candidates = int(file.readline())
-#     for _ in range(number_of_candidates):
-#         competitors.append(Competitor(*file.readline().split()))
-#     file.close()
-#     # print('number_of_candidates=', number_of_candidates)
-#     # print('competitors=', competitors)
-#     for i in optimised_quick_sort(competitors):
-#         print(i)
+#     # В первой строке задано число участников n
+#     pipl_count = int(file.readline())
+#     #  В каждой из следующих n строк задана информация про одного из участников.
+#     # i-й участник описывается тремя параметрами:
+
+#     # уникальным логином (строкой из маленьких латинских букв длиной не более 20)
+#     # числом решённых задач Pi
+#     # штрафом Fi
+#     # Fi и Pi — целые числа, лежащие в диапазоне от 0 до 109.
+
+#     pipl_list = []
+#     for i in range(pipl_count):
+#         # pipl_list.append(str(file.readline()).rstrip())
+#         pipl_list.append(str(file.readline()).rstrip().split())
+#     file.close()    
+#     fast_sort(pipl_list,pipl_count)
+#     for i in pipl_list:
+#         print(i[0])
+
+
 
 
 # ------------------------------
-# 20230528 try1
+# 20230529 try5 ok
 # ------------------------------
 
-from operator import gt, eq, lt
-import random
+# from operator import gt, eq, lt
 
-def compare_pipl(pipl1,pipl2):
-    pipl1_tasks=int(pipl1[1])
-    pipl2_tasks=int(pipl2[1])
-    pipl1_fine=int(pipl1[2])
-    pipl2_fine=int(pipl2[2])
-    # print('pipl1_name=',pipl1[0])
-    # print('     pipl1_tasks=',pipl1_tasks)
-    # print('         pipl1_fine=',pipl1_fine)
-    # print('pipl2_name=',pipl2[0])
-    # print('     pipl2_tasks=',pipl2_tasks)
-    # print('         pipl2_fine=',pipl2_fine)
-    # if int(pipl1[1]) > int(pipl2[1]):
-    if gt(pipl1_tasks, pipl2_tasks):
-        # print('ge(pipl1_tasks, pipl2_tasks)')
-        return True
-    # elif pipl1[1] == pipl2[1]:
-    elif eq(pipl1_tasks, pipl2_tasks):
-        # print('eq(pipl1_tasks, pipl2_tasks)')
-        # if pipl1[2] > pipl2[2]:
-        if lt(pipl1_fine, pipl2_fine):
-            # print('ge(pipl1_fine, pipl2_fine)')
-            return True
-        # elif pipl1[2] == pipl2[2]:
-        elif eq(pipl1_fine, pipl2_fine):
-            # print('eq(pipl1_fine, pipl2_fine)')
-            # if pipl1[2] < pipl2[2]:
-            if lt(pipl1[0], pipl2[0]):
-                # print('lt(pipl1[0], pipl2[0])')
-                return True
-    # print('end false')
-    return False
 
-# функция partition(array, pivot):
-#     left = элементы array, меньшие pivot
-#     center = элементы array, равные pivot
-#     right = элементы array, большие pivot
-#     return left, center, right
+# class pipl:
+#     def __init__(self, name: str, tasks: str, tickets: str) -> None:
+#             self.name: str = name
+#             self.tasks: int = int(tasks)
+#             self.tickets: int = int(tickets)
 
-# функция quicksort(array):
-#     if length(array) < 2:  # базовый случай,
+#     def __str__(self):
+#         # return ' '.join(str(x) for x in self.cells)
+#         return self.name
+
+# def compare_pipl(pipl1,pipl2):
+#     # pipl1_tasks=int(pipl1[1])
+#     # pipl2_tasks=int(pipl2[1])
+#     # pipl1_fine=int(pipl1[2])
+#     # pipl2_fine=int(pipl2[2])
+#     pipl1_tasks=pipl1.tasks
+#     pipl2_tasks=pipl2.tasks
+#     pipl1_fine=pipl1.tickets
+#     pipl2_fine=pipl2.tickets
+#     if (pipl1_tasks > pipl2_tasks):
+#         return True
+#     elif (pipl1_tasks == pipl2_tasks):
+#         if (pipl1_fine < pipl2_fine):
+#             return True
+#         elif (pipl1_fine== pipl2_fine):
+#             if (pipl1.name< pipl2.name):
+#                 return True
+#     return False
+
+# def partition(array, pivot_index,first_index, end_index):
+#     left_index = first_index
+#     right_index=end_index
+#     pivot=array[pivot_index]
+#     while(left_index!=right_index):
+#         if compare_pipl(array[left_index], pivot):
+#             left_index+=1
+#         elif compare_pipl(pivot,array[right_index]):
+#             right_index-=1
+#         # elif eq(array[left_index], pivot):
+#         elif array[left_index]== pivot:
+#             array[left_index]=array[right_index]
+#             array[right_index]=pivot
+#             left_index+=1
+#             pivot_index=right_index
+#         # elif eq(pivot,array[right_index]):
+#         elif array[right_index]==pivot:
+#             array[right_index]=array[left_index]
+#             array[left_index]=pivot
+#             right_index-=1
+#             pivot_index=left_index
+#         else:
+#             tmp=array[left_index]
+#             array[left_index]=array[right_index]
+#             array[right_index]=tmp
+#             left_index+=1
+#             right_index-=1
+#     return pivot_index
+
+
+# def quicksort(array,first_index,end_index):
+#     len_arr=end_index - first_index+1
+#     half_len_arr=(len_arr//2)+first_index
+#     if  len_arr< 2:  # базовый случай,
 #         return array       # массивы с 0 или 1 элементами фактически отсортированы
 #     else:  # рекурсивный случай
-#         pivot = случайный элемент из array
-#         left, center, right = partition(array, pivot)
-#         return quicksort(left) + center + quicksort(right)
+#         pivot_index=partition(array, half_len_arr,first_index,end_index)
+#         quicksort(array, first_index, pivot_index-1)
+#         quicksort(array, pivot_index+1,end_index)
+#         return
 
-def partition(array, pivot):
-    # left = []
-    # # элементы array, меньшие pivot
-    # center =[]
-    # # элементы array, равные pivot
-    # right=[]
-    # # элементы array, большие pivot
-    # for i in array:
-    #     # print('pivot=',pivot)
-    #     # print('arrai[i]=',i)
-    #     if compare_pipl(i, pivot):
-    #     # if i < pivot:
-    #         # print('     left.append(i)')
-    #         left.append(i)
-    #     elif compare_pipl(pivot,i):
-    #     # elif i > pivot:
-    #         # print('     right.append(i)')
-    #         right.append(i)
-    #     else:
-    #     # elif i == pivot:
-    #         # print('     center.append(i)')
-    #         center.append(i)
-    # return left, center, right
+# def fast_sort(unsort_list, len_unsort_list):
+#     quicksort(unsort_list,0,len_unsort_list-1)
+#     return
 
 
-    left = []
-    # элементы array, меньшие pivot
-    center =[]
-    # элементы array, равные pivot
-    right=[]
-    left_index = 0
-    right_index=len(array)-1
-    print('pivot=',pivot)
-    while(left_index<right_index):
-        print('left_index=',left_index)
-        print('     array[left_index]=',array[left_index])
-        print('right_index=',right_index)
-        print('     array[right_index]=',array[right_index])
+# if __name__ == '__main__':
+#     file = open("input.txt", "r")
+#     # В первой строке задано число участников n
+#     pipl_count = int(file.readline())
+#     #  В каждой из следующих n строк задана информация про одного из участников.
+#     # i-й участник описывается тремя параметрами:
+
+#     # уникальным логином (строкой из маленьких латинских букв длиной не более 20)
+#     # числом решённых задач Pi
+#     # штрафом Fi
+#     # Fi и Pi — целые числа, лежащие в диапазоне от 0 до 109.
+
+#     pipl_list = []
+#     for i in range(pipl_count):
+#         # pipl_list.append(str(file.readline()).rstrip())
+#         # tmp_input=str(file.readline()).rstrip().split()
+#         # print('tmp_input=',tmp_input)
+#         # pipl_list.append(pipl(tmp_input[0],tmp_input[1],tmp_input[2]))
+#         pipl_list.append(pipl(*str(file.readline()).rstrip().split()))
+#     file.close()
+#     # print('pipl_list=',pipl_list)
+#     # for i in pipl_list:
+#     #     print(i)
+#     #     # print(i.name)
+
+#     fast_sort(pipl_list,pipl_count)
+#     for i in pipl_list:
+#         print(i)
+
+# # ------------------------------
+# # 20230529 try6 ok
+# # ------------------------------
+
+from operator import gt, eq, lt
+
+def compare_pipl(pipl1,pipl2):
+    # pipl1_tasks=int(pipl1[1])
+    # pipl2_tasks=int(pipl2[1])
+    # pipl1_fine=int(pipl1[2])
+    # pipl2_fine=int(pipl2[2])
+    pipl1_tasks=pipl1[1]
+    pipl2_tasks=pipl2[1]
+    pipl1_fine=pipl1[2]
+    pipl2_fine=pipl2[2]
+    if (pipl1_tasks > pipl2_tasks):
+        return True
+    elif (pipl1_tasks == pipl2_tasks):
+        if (pipl1_fine < pipl2_fine):
+            return True
+        elif (pipl1_fine== pipl2_fine):
+            if (pipl1[0]< pipl2[0]):
+                return True
+    return False
+
+def partition(array, pivot_index,first_index, end_index):
+    left_index = first_index
+    right_index=end_index
+    pivot=array[pivot_index]
+    while(left_index!=right_index):
         if compare_pipl(array[left_index], pivot):
-            print('     left.append(i)')
-            left.append(array[left_index])
             left_index+=1
-            print('left=', left)
         elif compare_pipl(pivot,array[right_index]):
-            print('     right.append(i)')
-            right.append(array[right_index])
             right_index-=1
-            print('right=', right)
-        elif eq(pivot,array[right_index]):
-            print('     eq right')
-            center.append(pivot)
-            right_index-=1
-            print('right=', right)
         elif eq(array[left_index], pivot):
-            print('     eq left')
-            center.append(pivot)
+            array[left_index]=array[right_index]
+            array[right_index]=pivot
             left_index+=1
-            print('left=', left)
-        else:
-            print('     swap')
-            left.append(array[right_index])
-            left_index+=1
-            right.append(array[left_index])
+            pivot_index=right_index
+        elif eq(pivot,array[right_index]):
+            array[right_index]=array[left_index]
+            array[left_index]=pivot
             right_index-=1
-
-            # tmp=array[left_index]
-            # array[left_index]=array[right_index]
-            # array[right_index]=tmp
-            # # swap(array[left],array[right])
-            # left_index+=1
-            # right_index-=1
-    
-    print('end left=', left)
-    print('end center=', center)
-    print('end right=', right)
-    return left, center, right
+            pivot_index=left_index
+        else:
+            tmp=array[left_index]
+            array[left_index]=array[right_index]
+            array[right_index]=tmp
+            left_index+=1
+            right_index-=1
+    return pivot_index
 
 
-def quicksort(array):
-    len_arr=len(array)
+def quicksort(array,first_index,end_index):
+    len_arr=end_index - first_index+1
+    half_len_arr=(len_arr//2)+first_index
     if  len_arr< 2:  # базовый случай,
         return array       # массивы с 0 или 1 элементами фактически отсортированы
     else:  # рекурсивный случай
-        # pivot = random(array)
-        pivot = array[len_arr//2]
-        left, center, right = partition(array, pivot)
-        return quicksort(left) + center + quicksort(right)
+        pivot_index=partition(array, half_len_arr,first_index,end_index)
+        quicksort(array, first_index, pivot_index-1)
+        quicksort(array, pivot_index+1,end_index)
+        return
 
 def fast_sort(unsort_list, len_unsort_list):
-    # # result_list=[len_unsort_list]
-    # result_list=[]
-    # for i in range(len_unsort_list):
-    #     print('i=',i)
-    #     # result_list[i]=unsort_list[i]
-    #     result_list.append(unsort_list[i])
-    # return result_list
-
-    # result_list=[]
-    # for i in range(len_unsort_list):
-    #     # print('i=',i)
-    #     result_list.append(unsort_list[i])
-
-    #     item_to_insert = unsort_list[i]
-    #     j = i
-    #     while (j > 0 and compare_pipl(item_to_insert, unsort_list[j-1])):
-    #         unsort_list[j] = unsort_list[j-1]
-    #         j -= 1
-    #     unsort_list[j] = item_to_insert
-
-    # return unsort_list
-    result_list=quicksort(unsort_list)
-    print('result_list=',result_list)
-    return result_list
+    quicksort(unsort_list,0,len_unsort_list-1)
+    return
 
 
 
@@ -383,13 +1119,12 @@ if __name__ == '__main__':
     pipl_list = []
     for i in range(pipl_count):
         # pipl_list.append(str(file.readline()).rstrip())
-        pipl_list.append(str(file.readline()).rstrip().split())
-    file.close()    
-
-    # print('begin')
-    # print('pipl_count=', pipl_count)
-    # print('pipl_list=', pipl_list)
-    pipl_sorted=fast_sort(pipl_list,pipl_count)
-    for i in pipl_sorted:
+        tmp_input=str(file.readline()).rstrip().split()
+        # print('tmp_input=',tmp_input)
+        pipl_list.append([tmp_input[0],int(tmp_input[1]),int(tmp_input[2])])
+        # pipl_list.append()
+    file.close()
+    # print('pipl_list=',pipl_list)
+    fast_sort(pipl_list,pipl_count)
+    for i in pipl_list:
         print(i[0])
-
