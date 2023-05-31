@@ -1035,79 +1035,79 @@
 #         print(i)
 
 # # ------------------------------
-# # 20230529 try6 ok
+# # 20230531 work rev1
 # # ------------------------------
 
-from operator import gt, eq, lt
+# 87836688
 
-def compare_pipl(pipl1,pipl2):
-    # pipl1_tasks=int(pipl1[1])
-    # pipl2_tasks=int(pipl2[1])
-    # pipl1_fine=int(pipl1[2])
-    # pipl2_fine=int(pipl2[2])
-    pipl1_tasks=pipl1[1]
-    pipl2_tasks=pipl2[1]
-    pipl1_fine=pipl1[2]
-    pipl2_fine=pipl2[2]
-    if (pipl1_tasks > pipl2_tasks):
+def compare_competitors(first, second):
+    first_tasks = first[1]
+    second_tasks = second[1]
+    first_fine = first[2]
+    second_fine = second[2]
+    if (first_tasks > second_tasks):
         return True
-    elif (pipl1_tasks == pipl2_tasks):
-        if (pipl1_fine < pipl2_fine):
+    elif (first_tasks == second_tasks):
+        if (first_fine < second_fine):
             return True
-        elif (pipl1_fine== pipl2_fine):
-            if (pipl1[0]< pipl2[0]):
+        elif (first_fine == second_fine):
+            if (first[0] < second[0]):
                 return True
     return False
 
-def partition(array, pivot_index,first_index, end_index):
+
+def partition(array, pivot_index, first_index, end_index):
     left_index = first_index
-    right_index=end_index
-    pivot=array[pivot_index]
-    while(left_index!=right_index):
-        if compare_pipl(array[left_index], pivot):
-            left_index+=1
-        elif compare_pipl(pivot,array[right_index]):
-            right_index-=1
-        elif eq(array[left_index], pivot):
-            array[left_index]=array[right_index]
-            array[right_index]=pivot
-            left_index+=1
-            pivot_index=right_index
-        elif eq(pivot,array[right_index]):
-            array[right_index]=array[left_index]
-            array[left_index]=pivot
-            right_index-=1
-            pivot_index=left_index
+    right_index = end_index
+    pivot = array[pivot_index]
+    while left_index != right_index:
+        if compare_competitors(array[left_index], pivot):
+            left_index += 1
+        elif compare_competitors(pivot, array[right_index]):
+            right_index -= 1
+        elif array[left_index] == pivot:
+            array[left_index] = array[right_index]
+            array[right_index] = pivot
+            left_index += 1
+            pivot_index = right_index
+        elif array[right_index] == pivot:
+            array[right_index] = array[left_index]
+            array[left_index] = pivot
+            right_index -= 1
+            pivot_index = left_index
         else:
-            tmp=array[left_index]
-            array[left_index]=array[right_index]
-            array[right_index]=tmp
-            left_index+=1
-            right_index-=1
+            tmp = array[left_index]
+            array[left_index] = array[right_index]
+            array[right_index] = tmp
+            left_index += 1
+            right_index -= 1
     return pivot_index
 
 
-def quicksort(array,first_index,end_index):
-    len_arr=end_index - first_index+1
-    half_len_arr=(len_arr//2)+first_index
-    if  len_arr< 2:  # базовый случай,
-        return array       # массивы с 0 или 1 элементами фактически отсортированы
-    else:  # рекурсивный случай
-        pivot_index=partition(array, half_len_arr,first_index,end_index)
-        quicksort(array, first_index, pivot_index-1)
-        quicksort(array, pivot_index+1,end_index)
+def quicksort(array, first_index, end_index):
+    len_indexes = end_index - first_index + 1
+    half_len_indexes = (len_indexes // 2) + first_index
+    if len_indexes < 2:
+        # базовый случай,
+        return array
+        # массивы с 0 или 1 элементами фактически отсортированы
+    else:
+        # рекурсивный случай
+        pivot_index = partition(
+            array, half_len_indexes, first_index, end_index
+        )
+        quicksort(array, first_index, pivot_index - 1)
+        quicksort(array, pivot_index + 1, end_index)
         return
 
-def fast_sort(unsort_list, len_unsort_list):
-    quicksort(unsort_list,0,len_unsort_list-1)
-    return
-
-
+# def fast_sort(unsort_list, len_unsort_list):
+#     quicksort(unsort_list,0,len_unsort_list-1)
+#     return
 
 if __name__ == '__main__':
     file = open("input.txt", "r")
     # В первой строке задано число участников n
-    pipl_count = int(file.readline())
+    competitors_count = int(file.readline())
     #  В каждой из следующих n строк задана информация про одного из участников.
     # i-й участник описывается тремя параметрами:
 
@@ -1116,15 +1116,17 @@ if __name__ == '__main__':
     # штрафом Fi
     # Fi и Pi — целые числа, лежащие в диапазоне от 0 до 109.
 
-    pipl_list = []
-    for i in range(pipl_count):
+    competitors_list = []
+    for i in range(competitors_count):
         # pipl_list.append(str(file.readline()).rstrip())
-        tmp_input=str(file.readline()).rstrip().split()
+        tmp_input = str(file.readline()).rstrip().split()
         # print('tmp_input=',tmp_input)
-        pipl_list.append([tmp_input[0],int(tmp_input[1]),int(tmp_input[2])])
+        competitors_list.append(
+            [tmp_input[0], int(tmp_input[1]), int(tmp_input[2])]
+        )
         # pipl_list.append()
     file.close()
     # print('pipl_list=',pipl_list)
-    fast_sort(pipl_list,pipl_count)
-    for i in pipl_list:
+    quicksort(competitors_list, 0, competitors_count - 1)
+    for i in competitors_list:
         print(i[0])
