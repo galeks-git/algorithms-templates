@@ -1034,36 +1034,189 @@
 #     for i in pipl_list:
 #         print(i)
 
-# # ------------------------------
-# # 20230531 work rev1
-# # ------------------------------
+# # # ------------------------------
+# # # 20230531 work rev1
+# # # ------------------------------
 
-# 87836688
+# # 87836688
 
-def compare_competitors(first, second):
-    first_tasks = first[1]
-    second_tasks = second[1]
-    first_fine = first[2]
-    second_fine = second[2]
-    if (first_tasks > second_tasks):
-        return True
-    elif (first_tasks == second_tasks):
-        if (first_fine < second_fine):
+# def compare_competitors(first, second):
+#     first_tasks = first[1]
+#     second_tasks = second[1]
+#     first_fine = first[2]
+#     second_fine = second[2]
+#     if (first_tasks > second_tasks):
+#         return True
+#     elif (first_tasks == second_tasks):
+#         if (first_fine < second_fine):
+#             return True
+#         elif (first_fine == second_fine):
+#             if (first[0] < second[0]):
+#                 return True
+#     return False
+
+
+# def partition(array, pivot_index, first_index, end_index):
+#     left_index = first_index
+#     right_index = end_index
+#     pivot = array[pivot_index]
+#     while left_index != right_index:
+#         if compare_competitors(array[left_index], pivot):
+#             left_index += 1
+#         elif compare_competitors(pivot, array[right_index]):
+#             right_index -= 1
+#         elif array[left_index] == pivot:
+#             array[left_index] = array[right_index]
+#             array[right_index] = pivot
+#             left_index += 1
+#             pivot_index = right_index
+#         elif array[right_index] == pivot:
+#             array[right_index] = array[left_index]
+#             array[left_index] = pivot
+#             right_index -= 1
+#             pivot_index = left_index
+#         else:
+#             tmp = array[left_index]
+#             array[left_index] = array[right_index]
+#             array[right_index] = tmp
+#             left_index += 1
+#             right_index -= 1
+#     return pivot_index
+
+
+# def quicksort(array, first_index, end_index):
+#     len_indexes = end_index - first_index + 1
+#     half_len_indexes = (len_indexes // 2) + first_index
+#     if len_indexes < 2:
+#         # базовый случай,
+#         return array
+#         # массивы с 0 или 1 элементами фактически отсортированы
+#     else:
+#         # рекурсивный случай
+#         pivot_index = partition(
+#             array, half_len_indexes, first_index, end_index
+#         )
+#         quicksort(array, first_index, pivot_index - 1)
+#         quicksort(array, pivot_index + 1, end_index)
+#         return
+
+# # def fast_sort(unsort_list, len_unsort_list):
+# #     quicksort(unsort_list,0,len_unsort_list-1)
+# #     return
+
+# if __name__ == '__main__':
+#     file = open("input.txt", "r")
+#     # В первой строке задано число участников n
+#     competitors_count = int(file.readline())
+#     #  В каждой из следующих n строк задана информация про одного из участников.
+#     # i-й участник описывается тремя параметрами:
+
+#     # уникальным логином (строкой из маленьких латинских букв длиной не более 20)
+#     # числом решённых задач Pi
+#     # штрафом Fi
+#     # Fi и Pi — целые числа, лежащие в диапазоне от 0 до 109.
+
+#     competitors_list = []
+#     for i in range(competitors_count):
+#         # pipl_list.append(str(file.readline()).rstrip())
+#         tmp_input = str(file.readline()).rstrip().split()
+#         # print('tmp_input=',tmp_input)
+#         competitors_list.append(
+#             [tmp_input[0], int(tmp_input[1]), int(tmp_input[2])]
+#         )
+#         # pipl_list.append()
+#     file.close()
+#     # print('pipl_list=',pipl_list)
+#     quicksort(competitors_list, 0, competitors_count - 1)
+#     for i in competitors_list:
+#         print(i[0])
+
+
+# ------------------------------
+# 20230607 try5 ok
+# ------------------------------
+
+# from operator import gt, eq, lt
+
+# 87836858
+
+class Competitor:
+    def __init__(self, name: str, tasks: str, tickets: str) -> None:
+            self.name: str = name
+            self.tasks: int = int(tasks)
+            self.tickets: int = int(tickets)
+
+    def __str__(self):
+        # return ' '.join(str(x) for x in self.cells)
+        return self.name
+
+    # def __lt__(self, other):
+    #     first_tasks = self.tasks
+    #     second_tasks = other.tasks
+    #     first_fine = self.tickets
+    #     second_fine = other.tickets
+    #     if (first_tasks > second_tasks):
+    #         return True
+    #     elif (first_tasks == second_tasks):
+    #         if (first_fine < second_fine):
+    #             return True
+    #         elif (first_fine == second_fine):
+    #             if (self.name < other.name):
+    #                 return True
+    #     return False        
+
+
+    def __lt__(self, other):
+        # first_tasks = self.tasks
+        # second_tasks = other.tasks
+        # first_fine = self.tickets
+        # second_fine = other.tickets
+        if (self.tasks > other.tasks):
             return True
-        elif (first_fine == second_fine):
-            if (first[0] < second[0]):
+        elif (self.tasks == other.tasks):
+            if (self.tickets < other.tickets):
                 return True
-    return False
+            elif (self.tickets == other.tickets):
+                if (self.name < other.name):
+                    return True
+        return False        
+
+    # def __lt__(self, other):
+    #     if not isinstance(other, (int, Clock)):
+    #         raise TypeError("Операнд справа должен иметь тип int или Clock")
+ 
+    #     sc = other if isinstance(other, int) else other.seconds
+    #     return self.seconds < sc
+
+# def compare_competitors(first, second):
+#     first_tasks = first[1]
+#     second_tasks = second[1]
+#     first_fine = first[2]
+#     second_fine = second[2]
+#     if (first_tasks > second_tasks):
+#         return True
+#     elif (first_tasks == second_tasks):
+#         if (first_fine < second_fine):
+#             return True
+#         elif (first_fine == second_fine):
+#             if (first[0] < second[0]):
+#                 return True
+#     return False
 
 
-def partition(array, pivot_index, first_index, end_index):
+# def partition(array, pivot_index, first_index, end_index):
+def partition(array, first_index, end_index):
+    len_indexes = end_index - first_index + 1
+    pivot_index = (len_indexes // 2) + first_index
     left_index = first_index
     right_index = end_index
     pivot = array[pivot_index]
     while left_index != right_index:
-        if compare_competitors(array[left_index], pivot):
+        # if compare_competitors(array[left_index], pivot):
+        if array[left_index] < pivot:
             left_index += 1
-        elif compare_competitors(pivot, array[right_index]):
+        # elif compare_competitors(pivot, array[right_index]):
+        elif pivot < array[right_index]:
             right_index -= 1
         elif array[left_index] == pivot:
             array[left_index] = array[right_index]
@@ -1086,7 +1239,7 @@ def partition(array, pivot_index, first_index, end_index):
 
 def quicksort(array, first_index, end_index):
     len_indexes = end_index - first_index + 1
-    half_len_indexes = (len_indexes // 2) + first_index
+    # half_len_indexes = (len_indexes // 2) + first_index
     if len_indexes < 2:
         # базовый случай,
         return array
@@ -1094,15 +1247,13 @@ def quicksort(array, first_index, end_index):
     else:
         # рекурсивный случай
         pivot_index = partition(
-            array, half_len_indexes, first_index, end_index
+            # array, half_len_indexes, first_index, end_index
+            array, first_index, end_index
         )
         quicksort(array, first_index, pivot_index - 1)
         quicksort(array, pivot_index + 1, end_index)
         return
 
-# def fast_sort(unsort_list, len_unsort_list):
-#     quicksort(unsort_list,0,len_unsort_list-1)
-#     return
 
 if __name__ == '__main__':
     file = open("input.txt", "r")
@@ -1115,18 +1266,12 @@ if __name__ == '__main__':
     # числом решённых задач Pi
     # штрафом Fi
     # Fi и Pi — целые числа, лежащие в диапазоне от 0 до 109.
-
     competitors_list = []
     for i in range(competitors_count):
-        # pipl_list.append(str(file.readline()).rstrip())
-        tmp_input = str(file.readline()).rstrip().split()
-        # print('tmp_input=',tmp_input)
         competitors_list.append(
-            [tmp_input[0], int(tmp_input[1]), int(tmp_input[2])]
+            Competitor(*str(file.readline()).rstrip().split())
         )
-        # pipl_list.append()
     file.close()
-    # print('pipl_list=',pipl_list)
     quicksort(competitors_list, 0, competitors_count - 1)
     for i in competitors_list:
-        print(i[0])
+        print(i)
