@@ -1132,45 +1132,167 @@
 #         print(i[0])
 
 
-# ------------------------------
-# 20230607 try5 ok
-# ------------------------------
+# # ------------------------------
+# # 20230607 try5 ok
+# # ------------------------------
 
-# from operator import gt, eq, lt
+# # from operator import gt, eq, lt
+
+# # 87836858
+
+# class Competitor:
+#     def __init__(self, name: str, tasks: str, tickets: str) -> None:
+#             self.name: str = name
+#             self.tasks: int = int(tasks)
+#             self.tickets: int = int(tickets)
+
+#     def __str__(self):
+#         # return ' '.join(str(x) for x in self.cells)
+#         return self.name
+
+#     # def __lt__(self, other):
+#     #     first_tasks = self.tasks
+#     #     second_tasks = other.tasks
+#     #     first_fine = self.tickets
+#     #     second_fine = other.tickets
+#     #     if (first_tasks > second_tasks):
+#     #         return True
+#     #     elif (first_tasks == second_tasks):
+#     #         if (first_fine < second_fine):
+#     #             return True
+#     #         elif (first_fine == second_fine):
+#     #             if (self.name < other.name):
+#     #                 return True
+#     #     return False        
+
+
+#     def __lt__(self, other):
+#         # first_tasks = self.tasks
+#         # second_tasks = other.tasks
+#         # first_fine = self.tickets
+#         # second_fine = other.tickets
+#         if (self.tasks > other.tasks):
+#             return True
+#         elif (self.tasks == other.tasks):
+#             if (self.tickets < other.tickets):
+#                 return True
+#             elif (self.tickets == other.tickets):
+#                 if (self.name < other.name):
+#                     return True
+#         return False        
+
+#     # def __lt__(self, other):
+#     #     if not isinstance(other, (int, Clock)):
+#     #         raise TypeError("Операнд справа должен иметь тип int или Clock")
+ 
+#     #     sc = other if isinstance(other, int) else other.seconds
+#     #     return self.seconds < sc
+
+# # def compare_competitors(first, second):
+# #     first_tasks = first[1]
+# #     second_tasks = second[1]
+# #     first_fine = first[2]
+# #     second_fine = second[2]
+# #     if (first_tasks > second_tasks):
+# #         return True
+# #     elif (first_tasks == second_tasks):
+# #         if (first_fine < second_fine):
+# #             return True
+# #         elif (first_fine == second_fine):
+# #             if (first[0] < second[0]):
+# #                 return True
+# #     return False
+
+
+# # def partition(array, pivot_index, first_index, end_index):
+# def partition(array, first_index, end_index):
+#     len_indexes = end_index - first_index + 1
+#     pivot_index = (len_indexes // 2) + first_index
+#     left_index = first_index
+#     right_index = end_index
+#     pivot = array[pivot_index]
+#     while left_index != right_index:
+#         # if compare_competitors(array[left_index], pivot):
+#         if array[left_index] < pivot:
+#             left_index += 1
+#         # elif compare_competitors(pivot, array[right_index]):
+#         elif pivot < array[right_index]:
+#             right_index -= 1
+#         elif array[left_index] == pivot:
+#             array[left_index] = array[right_index]
+#             array[right_index] = pivot
+#             left_index += 1
+#             pivot_index = right_index
+#         elif array[right_index] == pivot:
+#             array[right_index] = array[left_index]
+#             array[left_index] = pivot
+#             right_index -= 1
+#             pivot_index = left_index
+#         else:
+#             tmp = array[left_index]
+#             array[left_index] = array[right_index]
+#             array[right_index] = tmp
+#             left_index += 1
+#             right_index -= 1
+#     return pivot_index
+
+
+# def quicksort(array, first_index, end_index):
+#     len_indexes = end_index - first_index + 1
+#     # half_len_indexes = (len_indexes // 2) + first_index
+#     if len_indexes < 2:
+#         # базовый случай,
+#         return array
+#         # массивы с 0 или 1 элементами фактически отсортированы
+#     else:
+#         # рекурсивный случай
+#         pivot_index = partition(
+#             # array, half_len_indexes, first_index, end_index
+#             array, first_index, end_index
+#         )
+#         quicksort(array, first_index, pivot_index - 1)
+#         quicksort(array, pivot_index + 1, end_index)
+#         return
+
+
+# if __name__ == '__main__':
+#     file = open("input.txt", "r")
+#     # В первой строке задано число участников n
+#     competitors_count = int(file.readline())
+#     #  В каждой из следующих n строк задана информация про одного из участников.
+#     # i-й участник описывается тремя параметрами:
+
+#     # уникальным логином (строкой из маленьких латинских букв длиной не более 20)
+#     # числом решённых задач Pi
+#     # штрафом Fi
+#     # Fi и Pi — целые числа, лежащие в диапазоне от 0 до 109.
+#     competitors_list = []
+#     for i in range(competitors_count):
+#         competitors_list.append(
+#             Competitor(*str(file.readline()).rstrip().split())
+#         )
+#     file.close()
+#     quicksort(competitors_list, 0, competitors_count - 1)
+#     for i in competitors_list:
+#         print(i)
+
+# ------------------------------
+# 20230621
+# ------------------------------
 
 # 87836858
 
 class Competitor:
     def __init__(self, name: str, tasks: str, tickets: str) -> None:
-            self.name: str = name
-            self.tasks: int = int(tasks)
-            self.tickets: int = int(tickets)
+        self.name: str = name
+        self.tasks: int = int(tasks)
+        self.tickets: int = int(tickets)
 
     def __str__(self):
         # return ' '.join(str(x) for x in self.cells)
         return self.name
 
-    # def __lt__(self, other):
-    #     first_tasks = self.tasks
-    #     second_tasks = other.tasks
-    #     first_fine = self.tickets
-    #     second_fine = other.tickets
-    #     if (first_tasks > second_tasks):
-    #         return True
-    #     elif (first_tasks == second_tasks):
-    #         if (first_fine < second_fine):
-    #             return True
-    #         elif (first_fine == second_fine):
-    #             if (self.name < other.name):
-    #                 return True
-    #     return False        
-
-
     def __lt__(self, other):
-        # first_tasks = self.tasks
-        # second_tasks = other.tasks
-        # first_fine = self.tickets
-        # second_fine = other.tickets
         if (self.tasks > other.tasks):
             return True
         elif (self.tasks == other.tasks):
@@ -1179,63 +1301,78 @@ class Competitor:
             elif (self.tickets == other.tickets):
                 if (self.name < other.name):
                     return True
-        return False        
-
-    # def __lt__(self, other):
-    #     if not isinstance(other, (int, Clock)):
-    #         raise TypeError("Операнд справа должен иметь тип int или Clock")
- 
-    #     sc = other if isinstance(other, int) else other.seconds
-    #     return self.seconds < sc
-
-# def compare_competitors(first, second):
-#     first_tasks = first[1]
-#     second_tasks = second[1]
-#     first_fine = first[2]
-#     second_fine = second[2]
-#     if (first_tasks > second_tasks):
-#         return True
-#     elif (first_tasks == second_tasks):
-#         if (first_fine < second_fine):
-#             return True
-#         elif (first_fine == second_fine):
-#             if (first[0] < second[0]):
-#                 return True
-#     return False
+        return False
 
 
-# def partition(array, pivot_index, first_index, end_index):
-def partition(array, first_index, end_index):
-    len_indexes = end_index - first_index + 1
-    pivot_index = (len_indexes // 2) + first_index
-    left_index = first_index
-    right_index = end_index
+# def partition(array, first_index, end_index):
+def partition(array, left_index, right_index):
+    print('begin partition')
+    print('1 left_index=', left_index)
+    print('1 right_index=', right_index)
+    len_indexes = right_index - left_index + 1
+    pivot_index = (len_indexes // 2) + left_index
+    # left_index = first_index
+    # right_index = end_index
     pivot = array[pivot_index]
-    while left_index != right_index:
-        # if compare_competitors(array[left_index], pivot):
-        if array[left_index] < pivot:
+    while left_index < right_index:
+        print('2    left_index=', left_index)
+        print('2    right_index=', right_index)
+        print('2    pivot=', pivot)
+        print('2    pivot_index=', pivot_index)
+        while array[left_index] < pivot:
+            print('3   while array[left_index]     left_index=', left_index)
+            print('3   while array[left_index]     array[left_index]=', array[left_index])
             left_index += 1
-        # elif compare_competitors(pivot, array[right_index]):
-        elif pivot < array[right_index]:
+        while pivot < array[right_index]:
+            print('3   while array[right_index]     right_index=', right_index)
+            print('3   while array[right_index]     array[right_index]=', array[right_index])
             right_index -= 1
-        elif array[left_index] == pivot:
-            array[left_index] = array[right_index]
-            array[right_index] = pivot
-            left_index += 1
+
+        # array[left_index], array[right_index] = (
+        #     array[right_index], array[left_index]
+        # )
+        print('4   tmp tmp[tmp]     left_index=', left_index)
+        print('3   tmp tmp[tmp]     array[left_index]=', array[left_index])
+        print('3   tmp tmp[tmp]     right_index=', right_index)
+        print('3   tmp tmp[tmp]     array[right_index]=', array[right_index])
+
+        if array[left_index] == pivot:
             pivot_index = right_index
-        elif array[right_index] == pivot:
-            array[right_index] = array[left_index]
-            array[left_index] = pivot
-            right_index -= 1
+        if array[right_index] == pivot:
             pivot_index = left_index
-        else:
-            tmp = array[left_index]
-            array[left_index] = array[right_index]
-            array[right_index] = tmp
-            left_index += 1
-            right_index -= 1
+        tmp = array[left_index]
+        array[left_index] = array[right_index]
+        array[right_index] = tmp
+
+        left_index += 1
+        right_index -= 1
+        # elif array[left_index] == pivot:
+        #     array[left_index] = array[right_index]
+        #     array[right_index] = pivot
+        #     left_index += 1
+        #     pivot_index = right_index
+        # elif array[right_index] == pivot:
+        #     array[right_index] = array[left_index]
+        #     array[left_index] = pivot
+        #     right_index -= 1
+        #     pivot_index = left_index
+        # else:
+        #     tmp = array[left_index]
+        #     array[left_index] = array[right_index]
+        #     array[right_index] = tmp
+        #     left_index += 1
+        #     right_index -= 1
+    print('5    pivot_index=', pivot_index)
     return pivot_index
 
+# def quicksort(array, first_index, end_index):
+#     pivot_index = partition(
+#         # array, half_len_indexes, first_index, end_index
+#         array, first_index, end_index
+#     )
+#     quicksort(array, first_index, pivot_index - 1)
+#     quicksort(array, pivot_index + 1, end_index)
+#     return
 
 def quicksort(array, first_index, end_index):
     len_indexes = end_index - first_index + 1
