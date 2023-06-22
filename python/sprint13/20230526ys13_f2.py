@@ -1277,7 +1277,7 @@
 #         print(i)
 
 # ------------------------------
-# 20230621
+# 20230622
 # ------------------------------
 
 # 87836858
@@ -1304,87 +1304,84 @@ class Competitor:
         return False
 
 
-# def partition(array, first_index, end_index):
 def partition(array, left_index, right_index):
-    print('begin partition')
-    print('1 left_index=', left_index)
-    print('1 right_index=', right_index)
+    # print('begin partition')
+    # print('1 left_index=', left_index)
+    # print('1 right_index=', right_index)
+
     len_indexes = right_index - left_index + 1
     pivot_index = (len_indexes // 2) + left_index
-    # left_index = first_index
-    # right_index = end_index
     pivot = array[pivot_index]
+
+    # pivot = array[(right_index - left_index) // 2]
+
     while left_index < right_index:
-        print('2    left_index=', left_index)
-        print('2    right_index=', right_index)
-        print('2    pivot=', pivot)
-        print('2    pivot_index=', pivot_index)
+        # print('2    left_index=', left_index)
+        # print('2    right_index=', right_index)
+        # print('2    pivot=', pivot)
+        # print('2    pivot_index=', pivot_index)
         while array[left_index] < pivot:
-            print('3   while array[left_index]     left_index=', left_index)
-            print('3   while array[left_index]     array[left_index]=', array[left_index])
+            # print('3   while array[left_index]     left_index=', left_index)
+            # print('3   while array[left_index]     array[left_index]=', array[left_index])
             left_index += 1
         while pivot < array[right_index]:
-            print('3   while array[right_index]     right_index=', right_index)
-            print('3   while array[right_index]     array[right_index]=', array[right_index])
+            # print('3   while array[right_index]     right_index=', right_index)
+            # print('3   while array[right_index]     array[right_index]=', array[right_index])
             right_index -= 1
 
-        # array[left_index], array[right_index] = (
-        #     array[right_index], array[left_index]
-        # )
-        print('4   tmp tmp[tmp]     left_index=', left_index)
-        print('3   tmp tmp[tmp]     array[left_index]=', array[left_index])
-        print('3   tmp tmp[tmp]     right_index=', right_index)
-        print('3   tmp tmp[tmp]     array[right_index]=', array[right_index])
+        # print('4       left_index=', left_index)
+        # print('4       array[left_index]=', array[left_index])
+        # print('4       right_index=', right_index)
+        # print('4       array[right_index]=', array[right_index])
 
-        if array[left_index] == pivot:
-            pivot_index = right_index
-        if array[right_index] == pivot:
-            pivot_index = left_index
-        tmp = array[left_index]
-        array[left_index] = array[right_index]
-        array[right_index] = tmp
+        if left_index >= right_index:
+            # print('6    return   right_index=', right_index)
+            return right_index
 
-        left_index += 1
-        right_index -= 1
-        # elif array[left_index] == pivot:
-        #     array[left_index] = array[right_index]
-        #     array[right_index] = pivot
-        #     left_index += 1
-        #     pivot_index = right_index
-        # elif array[right_index] == pivot:
-        #     array[right_index] = array[left_index]
-        #     array[left_index] = pivot
-        #     right_index -= 1
-        #     pivot_index = left_index
-        # else:
-        #     tmp = array[left_index]
-        #     array[left_index] = array[right_index]
-        #     array[right_index] = tmp
-        #     left_index += 1
-        #     right_index -= 1
-    print('5    pivot_index=', pivot_index)
-    return pivot_index
+        # print('5   swap     left_index=', left_index)
+        # print('5   swap     array[left_index]=', array[left_index])
+        # print('5   swap     right_index=', right_index)
+        # print('5   swap    array[right_index]=', array[right_index])
+
+        array[left_index], array[right_index] = (
+            array[right_index], array[left_index]
+        )
+        # tmp = array[left_index]
+        # array[left_index] = array[right_index]
+        # array[right_index] = tmp
+
+
+
+
+# def quicksort(array, first_index, end_index):
+#     # print('0   quicksort     array=', array)
+#     print('0   quicksort     first_index=', first_index)
+#     print('0   quicksort     end_index=', end_index)
+#     if first_index  >= end_index:
+#         return
+#     pivot_index = partition(
+#         array, first_index, end_index
+#     )
+#     # quicksort(array, first_index, pivot_index)
+#     quicksort(array, first_index, pivot_index - 1)
+#     quicksort(array, pivot_index + 1, end_index)
+#     return
 
 # def quicksort(array, first_index, end_index):
 #     pivot_index = partition(
-#         # array, half_len_indexes, first_index, end_index
 #         array, first_index, end_index
 #     )
-#     quicksort(array, first_index, pivot_index - 1)
+#     quicksort(array, first_index, pivot_index-1)
+#     # quicksort(array, first_index, pivot_index - 1)
 #     quicksort(array, pivot_index + 1, end_index)
 #     return
 
 def quicksort(array, first_index, end_index):
     len_indexes = end_index - first_index + 1
-    # half_len_indexes = (len_indexes // 2) + first_index
     if len_indexes < 2:
-        # базовый случай,
-        return array
-        # массивы с 0 или 1 элементами фактически отсортированы
+        return
     else:
-        # рекурсивный случай
         pivot_index = partition(
-            # array, half_len_indexes, first_index, end_index
             array, first_index, end_index
         )
         quicksort(array, first_index, pivot_index - 1)
