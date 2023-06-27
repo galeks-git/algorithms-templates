@@ -588,35 +588,118 @@
 #     print(target_index)
 
 
+# # ------------------------------
+# # 20230621
+# # ------------------------------
+
+# # 88012713
+
+# # def binary_search(array, target, left_index, right_index) -> int:
+# #     print('begin binarySearch')
+# #     while right_index > left_index:
+# #         middle_index = (left_index + right_index) // 2
+# #         if array[middle_index] == target:
+# #             # центральный элемент — искомый
+# #             return middle_index
+# #         if target < array[middle_index]:
+# #             # искомый элемент меньше центрального
+# #             # значит следует искать в левой половине
+# #             right_index = middle_index
+# #         else:
+# #             left_index = middle_index + 1
+# #     return -1
+
+
+# def broken_my_search(array, target, start_index, end_index) -> int:
+#     # print('begin broken_my_search')
+#     # print("1 array=", array)
+#     # print("1 target=", target)
+#     # print("1 start_index=", start_index)
+#     # print("1 end_index=", end_index)
+
+#     while True:
+#         if array[start_index] == target:
+#             return start_index
+#         if array[end_index] == target:
+#             return end_index
+
+#         len_indexes = end_index-start_index + 1
+#         if len_indexes < 3:
+#             return -1
+#         half_len_indexes = (len_indexes // 2) + start_index
+
+#         # print("2 start_index=", start_index)
+#         # print("2 end_index=", end_index)
+#         # print("2 len_indexes=", len_indexes)
+#         # print("2 half_len_indexes=", half_len_indexes)
+#         # print("2        target=", target)
+#         # print("2    array[start_index]=", array[start_index])
+#         # print("2    array[half_len_indexes]=", array[half_len_indexes])
+#         # print("2    array[end_index]=", array[end_index])        
+
+#         # if array[start_index] < array[end_index]:
+
+#         #     if array[start_index] < target < array[end_index]:
+
+#         #         return binary_search(
+#         #             array, target, start_index, end_index
+#         #         )
+
+#         if array[half_len_indexes] == target:
+#             return half_len_indexes
+
+#         if array[start_index] < array[half_len_indexes]:
+#             if array[start_index] < target < array[half_len_indexes]:
+#                 end_index = half_len_indexes
+#                 continue
+#             else:
+#                 start_index = half_len_indexes + 1
+#                 continue
+#         else:
+#             if array[half_len_indexes] < target and array[end_index] > target:
+#                 start_index = half_len_indexes + 1
+#                 continue
+#             end_index = half_len_indexes
+
+
+# def broken_search(nums, target) -> int:
+#     #  Your code
+#     #  “ヽ(´▽｀)ノ”
+#     # print('begin broken_search')
+#     # print("1 nums=", nums)
+#     # print("1 target=", target)
+#     target_index = broken_my_search(nums, target, 0, len(nums)-1)
+#     return target_index
+
+
+# if __name__ == '__main__':
+#     file = open("input.txt", "r")
+#     # В первой строке записано число n –— длина массива.
+#     input_array_len = int(file.readline())
+#     # Во второй строке записано положительное число k –— искомый элемент. 
+#     target = int(file.readline())
+#     # Далее в строку через пробел записано n натуральных чисел – элементы массива.
+#     input_array = tuple(map(int, file.readline().split()))
+#     file.close()
+#     # print('begin')
+#     target_index = broken_search(input_array, target)
+#     print(target_index)
+
 # ------------------------------
-# 20230621
+# 20230627
 # ------------------------------
 
 # 88012713
 
-# def binary_search(array, target, left_index, right_index) -> int:
-#     print('begin binarySearch')
-#     while right_index > left_index:
-#         middle_index = (left_index + right_index) // 2
-#         if array[middle_index] == target:
-#             # центральный элемент — искомый
-#             return middle_index
-#         if target < array[middle_index]:
-#             # искомый элемент меньше центрального
-#             # значит следует искать в левой половине
-#             right_index = middle_index
-#         else:
-#             left_index = middle_index + 1
-#     return -1
-
-
-def broken_my_search(array, target, start_index, end_index) -> int:
+def broken_search(array, target) -> int:
+# def broken_my_search(array, target, start_index, end_index) -> int:
     # print('begin broken_my_search')
     # print("1 array=", array)
     # print("1 target=", target)
     # print("1 start_index=", start_index)
     # print("1 end_index=", end_index)
-
+    start_index = 0
+    end_index = len(array) - 1
     while True:
         if array[start_index] == target:
             return start_index
@@ -635,15 +718,7 @@ def broken_my_search(array, target, start_index, end_index) -> int:
         # print("2        target=", target)
         # print("2    array[start_index]=", array[start_index])
         # print("2    array[half_len_indexes]=", array[half_len_indexes])
-        # print("2    array[end_index]=", array[end_index])        
-
-        # if array[start_index] < array[end_index]:
-
-        #     if array[start_index] < target < array[end_index]:
-
-        #         return binary_search(
-        #             array, target, start_index, end_index
-        #         )
+        # print("2    array[end_index]=", array[end_index])
 
         if array[half_len_indexes] == target:
             return half_len_indexes
@@ -651,25 +726,16 @@ def broken_my_search(array, target, start_index, end_index) -> int:
         if array[start_index] < array[half_len_indexes]:
             if array[start_index] < target < array[half_len_indexes]:
                 end_index = half_len_indexes
-                continue
+                # continue
             else:
                 start_index = half_len_indexes + 1
-                continue
+                # continue
         else:
             if array[half_len_indexes] < target and array[end_index] > target:
                 start_index = half_len_indexes + 1
                 continue
+            # return -1
             end_index = half_len_indexes
-
-
-def broken_search(nums, target) -> int:
-    #  Your code
-    #  “ヽ(´▽｀)ノ”
-    # print('begin broken_search')
-    # print("1 nums=", nums)
-    # print("1 target=", target)
-    target_index = broken_my_search(nums, target, 0, len(nums)-1)
-    return target_index
 
 
 if __name__ == '__main__':

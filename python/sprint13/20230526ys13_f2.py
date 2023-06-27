@@ -1276,8 +1276,142 @@
 #     for i in competitors_list:
 #         print(i)
 
+# # ------------------------------
+# # 20230622
+# # ------------------------------
+
+# # 87836858
+
+# class Competitor:
+#     def __init__(self, name: str, tasks: str, tickets: str) -> None:
+#         self.name: str = name
+#         self.tasks: int = int(tasks)
+#         self.tickets: int = int(tickets)
+
+#     def __str__(self):
+#         # return ' '.join(str(x) for x in self.cells)
+#         return self.name
+
+#     def __lt__(self, other):
+#         if (self.tasks > other.tasks):
+#             return True
+#         elif (self.tasks == other.tasks):
+#             if (self.tickets < other.tickets):
+#                 return True
+#             elif (self.tickets == other.tickets):
+#                 if (self.name < other.name):
+#                     return True
+#         return False
+
+
+# def partition(array, left_index, right_index):
+#     # print('begin partition')
+#     # print('1 left_index=', left_index)
+#     # print('1 right_index=', right_index)
+
+#     len_indexes = right_index - left_index + 1
+#     pivot_index = (len_indexes // 2) + left_index
+#     pivot = array[pivot_index]
+
+#     # pivot = array[(right_index - left_index) // 2]
+
+#     while left_index < right_index:
+#         # print('2    left_index=', left_index)
+#         # print('2    right_index=', right_index)
+#         # print('2    pivot=', pivot)
+#         # print('2    pivot_index=', pivot_index)
+#         while array[left_index] < pivot:
+#             # print('3   while array[left_index]     left_index=', left_index)
+#             # print('3   while array[left_index]     array[left_index]=', array[left_index])
+#             left_index += 1
+#         while pivot < array[right_index]:
+#             # print('3   while array[right_index]     right_index=', right_index)
+#             # print('3   while array[right_index]     array[right_index]=', array[right_index])
+#             right_index -= 1
+
+#         # print('4       left_index=', left_index)
+#         # print('4       array[left_index]=', array[left_index])
+#         # print('4       right_index=', right_index)
+#         # print('4       array[right_index]=', array[right_index])
+
+#         if left_index >= right_index:
+#             # print('6    return   right_index=', right_index)
+#             return right_index
+
+#         # print('5   swap     left_index=', left_index)
+#         # print('5   swap     array[left_index]=', array[left_index])
+#         # print('5   swap     right_index=', right_index)
+#         # print('5   swap    array[right_index]=', array[right_index])
+
+#         array[left_index], array[right_index] = (
+#             array[right_index], array[left_index]
+#         )
+#         # tmp = array[left_index]
+#         # array[left_index] = array[right_index]
+#         # array[right_index] = tmp
+
+
+
+
+# # def quicksort(array, first_index, end_index):
+# #     # print('0   quicksort     array=', array)
+# #     print('0   quicksort     first_index=', first_index)
+# #     print('0   quicksort     end_index=', end_index)
+# #     if first_index  >= end_index:
+# #         return
+# #     pivot_index = partition(
+# #         array, first_index, end_index
+# #     )
+# #     # quicksort(array, first_index, pivot_index)
+# #     quicksort(array, first_index, pivot_index - 1)
+# #     quicksort(array, pivot_index + 1, end_index)
+# #     return
+
+# # def quicksort(array, first_index, end_index):
+# #     pivot_index = partition(
+# #         array, first_index, end_index
+# #     )
+# #     quicksort(array, first_index, pivot_index-1)
+# #     # quicksort(array, first_index, pivot_index - 1)
+# #     quicksort(array, pivot_index + 1, end_index)
+# #     return
+
+# def quicksort(array, first_index, end_index):
+#     len_indexes = end_index - first_index + 1
+#     if len_indexes < 2:
+#         return
+#     else:
+#         pivot_index = partition(
+#             array, first_index, end_index
+#         )
+#         quicksort(array, first_index, pivot_index - 1)
+#         quicksort(array, pivot_index + 1, end_index)
+#         return
+
+
+# if __name__ == '__main__':
+#     file = open("input.txt", "r")
+#     # В первой строке задано число участников n
+#     competitors_count = int(file.readline())
+#     #  В каждой из следующих n строк задана информация про одного из участников.
+#     # i-й участник описывается тремя параметрами:
+
+#     # уникальным логином (строкой из маленьких латинских букв длиной не более 20)
+#     # числом решённых задач Pi
+#     # штрафом Fi
+#     # Fi и Pi — целые числа, лежащие в диапазоне от 0 до 109.
+#     competitors_list = []
+#     for i in range(competitors_count):
+#         competitors_list.append(
+#             Competitor(*str(file.readline()).rstrip().split())
+#         )
+#     file.close()
+#     quicksort(competitors_list, 0, competitors_count - 1)
+#     for i in competitors_list:
+#         print(i)
+
 # ------------------------------
-# 20230622
+# 20230627
 # ------------------------------
 
 # 87836858
@@ -1351,42 +1485,27 @@ def partition(array, left_index, right_index):
         # array[right_index] = tmp
 
 
-
-
 # def quicksort(array, first_index, end_index):
-#     # print('0   quicksort     array=', array)
-#     print('0   quicksort     first_index=', first_index)
-#     print('0   quicksort     end_index=', end_index)
-#     if first_index  >= end_index:
+#     len_indexes = end_index - first_index + 1
+#     if len_indexes < 2:
 #         return
-#     pivot_index = partition(
-#         array, first_index, end_index
-#     )
-#     # quicksort(array, first_index, pivot_index)
-#     quicksort(array, first_index, pivot_index - 1)
-#     quicksort(array, pivot_index + 1, end_index)
-#     return
-
-# def quicksort(array, first_index, end_index):
-#     pivot_index = partition(
-#         array, first_index, end_index
-#     )
-#     quicksort(array, first_index, pivot_index-1)
-#     # quicksort(array, first_index, pivot_index - 1)
-#     quicksort(array, pivot_index + 1, end_index)
-#     return
+#     else:
+#         pivot_index = partition(
+#             array, first_index, end_index
+#         )
+#         quicksort(array, first_index, pivot_index - 1)
+#         quicksort(array, pivot_index + 1, end_index)
+#         return
 
 def quicksort(array, first_index, end_index):
     len_indexes = end_index - first_index + 1
     if len_indexes < 2:
         return
-    else:
-        pivot_index = partition(
-            array, first_index, end_index
-        )
-        quicksort(array, first_index, pivot_index - 1)
-        quicksort(array, pivot_index + 1, end_index)
-        return
+    pivot_index = partition(
+        array, first_index, end_index
+    )
+    quicksort(array, first_index, pivot_index - 1)
+    quicksort(array, pivot_index + 1, end_index)
 
 
 if __name__ == '__main__':
