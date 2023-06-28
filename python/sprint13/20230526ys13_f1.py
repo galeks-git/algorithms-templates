@@ -689,6 +689,73 @@
 # 20230627
 # ------------------------------
 
+# # 88012713
+
+# def broken_search(array, target) -> int:
+# # def broken_my_search(array, target, start_index, end_index) -> int:
+#     # print('begin broken_my_search')
+#     # print("1 array=", array)
+#     # print("1 target=", target)
+#     # print("1 start_index=", start_index)
+#     # print("1 end_index=", end_index)
+#     start_index = 0
+#     end_index = len(array) - 1
+#     while True:
+#         if array[start_index] == target:
+#             return start_index
+#         if array[end_index] == target:
+#             return end_index
+
+#         len_indexes = end_index-start_index + 1
+#         if len_indexes < 3:
+#             return -1
+#         half_len_indexes = (len_indexes // 2) + start_index
+
+#         # print("2 start_index=", start_index)
+#         # print("2 end_index=", end_index)
+#         # print("2 len_indexes=", len_indexes)
+#         # print("2 half_len_indexes=", half_len_indexes)
+#         # print("2        target=", target)
+#         # print("2    array[start_index]=", array[start_index])
+#         # print("2    array[half_len_indexes]=", array[half_len_indexes])
+#         # print("2    array[end_index]=", array[end_index])
+
+#         if array[half_len_indexes] == target:
+#             return half_len_indexes
+
+#         if array[start_index] < array[half_len_indexes]:
+#             if array[start_index] < target < array[half_len_indexes]:
+#                 end_index = half_len_indexes
+#                 # continue
+#             else:
+#                 start_index = half_len_indexes + 1
+#                 # continue
+#         else:
+#             if array[half_len_indexes] < target and array[end_index] > target:
+#                 start_index = half_len_indexes + 1
+#                 continue
+#             # return -1
+#             end_index = half_len_indexes
+
+
+# if __name__ == '__main__':
+#     file = open("input.txt", "r")
+#     # В первой строке записано число n –— длина массива.
+#     input_array_len = int(file.readline())
+#     # Во второй строке записано положительное число k –— искомый элемент. 
+#     target = int(file.readline())
+#     # Далее в строку через пробел записано n натуральных чисел – элементы массива.
+#     input_array = tuple(map(int, file.readline().split()))
+#     file.close()
+#     # print('begin')
+#     target_index = broken_search(input_array, target)
+#     print(target_index)
+
+
+# ------------------------------
+# 20230628
+# ------------------------------
+
 # 88012713
 
 def broken_search(array, target) -> int:
@@ -700,15 +767,16 @@ def broken_search(array, target) -> int:
     # print("1 end_index=", end_index)
     start_index = 0
     end_index = len(array) - 1
-    while True:
+    # while True:
+    while start_index <= end_index:
         if array[start_index] == target:
             return start_index
         if array[end_index] == target:
             return end_index
 
         len_indexes = end_index-start_index + 1
-        if len_indexes < 3:
-            return -1
+        # if len_indexes < 3:
+        #     return -1
         half_len_indexes = (len_indexes // 2) + start_index
 
         # print("2 start_index=", start_index)
@@ -725,7 +793,7 @@ def broken_search(array, target) -> int:
 
         if array[start_index] < array[half_len_indexes]:
             if array[start_index] < target < array[half_len_indexes]:
-                end_index = half_len_indexes
+                end_index = half_len_indexes - 1
                 # continue
             else:
                 start_index = half_len_indexes + 1
@@ -733,10 +801,11 @@ def broken_search(array, target) -> int:
         else:
             if array[half_len_indexes] < target and array[end_index] > target:
                 start_index = half_len_indexes + 1
-                continue
+                # continue
             # return -1
-            end_index = half_len_indexes
-
+            else:
+                end_index = half_len_indexes - 1
+    return -1
 
 if __name__ == '__main__':
     file = open("input.txt", "r")
