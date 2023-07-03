@@ -1,0 +1,12 @@
+<table>
+<tr><th>User</th><th>Count</th><th>Color</th></tr>
+<tr><td>avahi</td><td>2</td><td>Green</td></tr>
+<tr><td>colord</td><td>1</td><td>Green</td></tr>
+<tr><td>kernoops</td><td>2</td><td>Green</td></tr>
+<tr><td>message+</td><td>1</td><td>Green</td></tr>
+<tr><td>root</td><td>119</td><td>Red</td></tr>
+<tr><td>rtkit</td><td>1</td><td>Green</td></tr>
+<tr><td>sadmin</td><td>102</td><td>Red</td></tr>
+<tr><td>syslog</td><td>1</td><td>Green</td></tr>
+<tr><td>systemd+</td><td>2</td><td>Green</td></tr>
+</table>
