@@ -1,12 +1,16 @@
 <table>
+<br><big>hostname -A = ubn01 <br></big>
+<br><big>hostname -I = 10.0.2.15 <br></big>
+<br><big>limit process for user = 10 %<br></big>
+<br><big><i>#ps -fA</i></big>
 <tr><th>User</th><th>Count</th><th>Color</th></tr>
-<tr><td>avahi</td><td>2</td><td>Green</td></tr>
-<tr><td>colord</td><td>1</td><td>Green</td></tr>
-<tr><td>kernoops</td><td>2</td><td>Green</td></tr>
-<tr><td>message+</td><td>1</td><td>Green</td></tr>
-<tr><td>root</td><td>119</td><td>Red</td></tr>
-<tr><td>rtkit</td><td>1</td><td>Green</td></tr>
-<tr><td>sadmin</td><td>102</td><td>Red</td></tr>
-<tr><td>syslog</td><td>1</td><td>Green</td></tr>
-<tr><td>systemd+</td><td>2</td><td>Green</td></tr>
+<tr><td>avahi</td><td bgcolor="green">2</td><td>Green</td></tr>
+<tr><td>colord</td><td bgcolor="green">1</td><td>Green</td></tr>
+<tr><td>kernoops</td><td bgcolor="green">2</td><td>Green</td></tr>
+<tr><td>message+</td><td bgcolor="green">1</td><td>Green</td></tr>
+<tr><td>root</td><td bgcolor="red">119</td><td>Red</td></tr>
+<tr><td>rtkit</td><td bgcolor="green">1</td><td>Green</td></tr>
+<tr><td>sadmin</td><td bgcolor="red">102</td><td>Red</td></tr>
+<tr><td>syslog</td><td bgcolor="green">1</td><td>Green</td></tr>
+<tr><td>systemd+</td><td bgcolor="green">2</td><td>Green</td></tr>
 </table>
